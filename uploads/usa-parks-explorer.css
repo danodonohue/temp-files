@@ -1,0 +1,223 @@
+/* USA Parks Explorer Styles */
+/* Scoped with upe- prefix to avoid conflicts */
+
+#upe-container * {
+  box-sizing: border-box;
+}
+
+#upe-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+#upe-map {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+}
+
+/* Info Panel */
+.upe-info-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 16px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 320px;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.upe-info-panel h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #27ae60;
+  padding-bottom: 6px;
+}
+
+.upe-info-panel p {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.upe-info-panel p:last-of-type {
+  margin-bottom: 12px;
+}
+
+.upe-info-panel strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.upe-park-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #27ae60;
+  margin-bottom: 8px;
+}
+
+/* Download Section */
+.upe-download-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.upe-download-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.upe-download-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.upe-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.upe-btn-download {
+  background: #27ae60;
+  color: white;
+  flex: 1;
+  min-width: 70px;
+}
+
+.upe-btn-download:hover {
+  background: #229954;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(39, 174, 96, 0.3);
+}
+
+.upe-btn-download:active {
+  transform: translateY(0);
+}
+
+.upe-hint {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Close button */
+.upe-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #95a5a6;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.upe-close-btn:hover {
+  color: #e74c3c;
+}
+
+/* Loading indicator */
+.upe-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  color: #555;
+}
+
+.upe-loading::after {
+  content: '...';
+  animation: upe-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes upe-dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  #upe-container {
+    height: 500px;
+    border-radius: 4px;
+  }
+
+  .upe-info-panel {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  #upe-container {
+    height: 450px;
+  }
+
+  .upe-info-panel h3 {
+    font-size: 15px;
+  }
+
+  .upe-info-panel p {
+    font-size: 12px;
+  }
+
+  .upe-download-buttons {
+    flex-direction: column;
+  }
+
+  .upe-btn-download {
+    width: 100%;
+  }
+}
