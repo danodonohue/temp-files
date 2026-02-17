@@ -1,11 +1,11 @@
-// New Mexico Voting Districts - Powered by esri-leaflet
+// Pennsylvania Voting Districts - Powered by esri-leaflet
 (function() {
     'use strict';
 
     // Configuration
     const FEATURE_SERVICE_URL = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/15';
-    const STATE_FIPS = '35';
-    const STATE_NAME = 'New Mexico';
+    const STATE_FIPS = '42';
+    const STATE_NAME = 'Pennsylvania';
 
     // State
     let map;
@@ -13,7 +13,7 @@
     let selectedDistrict = null;
 
     function initApp() {
-        console.log('New Mexico Voting Districts: Initializing...');
+        console.log('Pennsylvania Voting Districts: Initializing...');
 
         // Show loading indicator immediately
         showLoading();
@@ -38,13 +38,13 @@
 
         initializeMap();
 
-        console.log('✓ New Mexico Voting Districts initialized');
+        console.log('✓ Pennsylvania Voting Districts initialized');
     }
 
     function initializeMap() {
-        // Initialize map centered on New Mexico
+        // Initialize map centered on Pennsylvania
         map = L.map('vde-map', {
-            center: [34.5199, -105.8701],
+            center: [41.2033, -77.1945],
             zoom: 7,
             minZoom: 5,
             maxZoom: 16
@@ -56,17 +56,17 @@
             maxZoom: 19
         }).addTo(map);
 
-        // Set bounds to New Mexico
+        // Set bounds to Pennsylvania
         const bounds = L.latLngBounds(
-            [31.3, -109.1],
-            [37, -103]
+            [39.7, -80.5],
+            [42.3, -74.7]
         );
         map.fitBounds(bounds);
 
-        // Add New Mexico voting districts layer
+        // Add Pennsylvania voting districts layer
         districtLayer = L.esri.featureLayer({
             url: FEATURE_SERVICE_URL,
-            where: "STATE='35'",  // Filter to New Mexico only
+            where: "STATE='42'",  // Filter to Pennsylvania only
             simplifyFactor: 0.75,
             precision: 4,
             style: styleDistrict,
@@ -85,7 +85,7 @@
             showError('Failed to load voting districts. Please try refreshing the page.');
         });
 
-        console.log('Map initialized with New Mexico districts');
+        console.log('Map initialized with Pennsylvania districts');
     }
 
     function styleDistrict(feature) {
@@ -170,7 +170,7 @@
             <button class="vde-close-btn" onclick="this.parentElement.remove();">&times;</button>
             <div class="vde-district-name">${districtName}</div>
             <p class="vde-geoid">GEOID: ${geoid}</p>
-            <p><strong>State:</strong> New Mexico</p>
+            <p><strong>State:</strong> Pennsylvania</p>
             <p><strong>County FIPS:</strong> ${county}</p>
             <p><strong>VTD Code:</strong> ${vtd}</p>
             <p><strong>Population:</strong> ${population}</p>
@@ -254,7 +254,7 @@
     function convertToKML(feature) {
         const props = feature.properties;
         const name = props.NAME || 'Voting District';
-        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: New Mexico\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
+        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: Pennsylvania\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
 
         let coordinates = '';
         if (feature.geometry.type === 'Polygon') {
@@ -350,7 +350,7 @@ ${trackPoints}
         loading.className = 'vde-loading';
         loading.innerHTML = `
             <div class="vde-loading-spinner"></div>
-            <div class="vde-loading-text">Loading New Mexico Voting Districts</div>
+            <div class="vde-loading-text">Loading Pennsylvania Voting Districts</div>
             <div class="vde-loading-subtext">Fetching precinct data from U.S. Census Bureau...</div>
         `;
         document.getElementById('vde-container').appendChild(loading);

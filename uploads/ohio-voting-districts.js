@@ -1,11 +1,11 @@
-// North Carolina Voting Districts - Powered by esri-leaflet
+// Ohio Voting Districts - Powered by esri-leaflet
 (function() {
     'use strict';
 
     // Configuration
     const FEATURE_SERVICE_URL = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/15';
-    const STATE_FIPS = '37';
-    const STATE_NAME = 'North Carolina';
+    const STATE_FIPS = '39';
+    const STATE_NAME = 'Ohio';
 
     // State
     let map;
@@ -13,7 +13,7 @@
     let selectedDistrict = null;
 
     function initApp() {
-        console.log('North Carolina Voting Districts: Initializing...');
+        console.log('Ohio Voting Districts: Initializing...');
 
         // Show loading indicator immediately
         showLoading();
@@ -38,13 +38,13 @@
 
         initializeMap();
 
-        console.log('✓ North Carolina Voting Districts initialized');
+        console.log('✓ Ohio Voting Districts initialized');
     }
 
     function initializeMap() {
-        // Initialize map centered on North Carolina
+        // Initialize map centered on Ohio
         map = L.map('vde-map', {
-            center: [35.7596, -79.0193],
+            center: [40.4173, -82.9071],
             zoom: 7,
             minZoom: 5,
             maxZoom: 16
@@ -56,17 +56,17 @@
             maxZoom: 19
         }).addTo(map);
 
-        // Set bounds to North Carolina
+        // Set bounds to Ohio
         const bounds = L.latLngBounds(
-            [33.8, -84.3],
-            [36.6, -75.4]
+            [38.4, -84.8],
+            [42.3, -80.5]
         );
         map.fitBounds(bounds);
 
-        // Add North Carolina voting districts layer
+        // Add Ohio voting districts layer
         districtLayer = L.esri.featureLayer({
             url: FEATURE_SERVICE_URL,
-            where: "STATE='37'",  // Filter to North Carolina only
+            where: "STATE='39'",  // Filter to Ohio only
             simplifyFactor: 0.75,
             precision: 4,
             style: styleDistrict,
@@ -85,7 +85,7 @@
             showError('Failed to load voting districts. Please try refreshing the page.');
         });
 
-        console.log('Map initialized with North Carolina districts');
+        console.log('Map initialized with Ohio districts');
     }
 
     function styleDistrict(feature) {
@@ -170,7 +170,7 @@
             <button class="vde-close-btn" onclick="this.parentElement.remove();">&times;</button>
             <div class="vde-district-name">${districtName}</div>
             <p class="vde-geoid">GEOID: ${geoid}</p>
-            <p><strong>State:</strong> North Carolina</p>
+            <p><strong>State:</strong> Ohio</p>
             <p><strong>County FIPS:</strong> ${county}</p>
             <p><strong>VTD Code:</strong> ${vtd}</p>
             <p><strong>Population:</strong> ${population}</p>
@@ -254,7 +254,7 @@
     function convertToKML(feature) {
         const props = feature.properties;
         const name = props.NAME || 'Voting District';
-        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: North Carolina\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
+        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: Ohio\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
 
         let coordinates = '';
         if (feature.geometry.type === 'Polygon') {
@@ -350,7 +350,7 @@ ${trackPoints}
         loading.className = 'vde-loading';
         loading.innerHTML = `
             <div class="vde-loading-spinner"></div>
-            <div class="vde-loading-text">Loading North Carolina Voting Districts</div>
+            <div class="vde-loading-text">Loading Ohio Voting Districts</div>
             <div class="vde-loading-subtext">Fetching precinct data from U.S. Census Bureau...</div>
         `;
         document.getElementById('vde-container').appendChild(loading);

@@ -1,11 +1,11 @@
-// New York Voting Districts - Powered by esri-leaflet
+// North Dakota Voting Districts - Powered by esri-leaflet
 (function() {
     'use strict';
 
     // Configuration
     const FEATURE_SERVICE_URL = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/15';
-    const STATE_FIPS = '36';
-    const STATE_NAME = 'New York';
+    const STATE_FIPS = '38';
+    const STATE_NAME = 'North Dakota';
 
     // State
     let map;
@@ -13,7 +13,7 @@
     let selectedDistrict = null;
 
     function initApp() {
-        console.log('New York Voting Districts: Initializing...');
+        console.log('North Dakota Voting Districts: Initializing...');
 
         // Show loading indicator immediately
         showLoading();
@@ -38,13 +38,13 @@
 
         initializeMap();
 
-        console.log('✓ New York Voting Districts initialized');
+        console.log('✓ North Dakota Voting Districts initialized');
     }
 
     function initializeMap() {
-        // Initialize map centered on New York
+        // Initialize map centered on North Dakota
         map = L.map('vde-map', {
-            center: [43.2994, -74.2179],
+            center: [47.5515, -101.002],
             zoom: 7,
             minZoom: 5,
             maxZoom: 16
@@ -56,17 +56,17 @@
             maxZoom: 19
         }).addTo(map);
 
-        // Set bounds to New York
+        // Set bounds to North Dakota
         const bounds = L.latLngBounds(
-            [40.5, -79.8],
-            [45, -71.8]
+            [45.9, -104.1],
+            [49, -96.6]
         );
         map.fitBounds(bounds);
 
-        // Add New York voting districts layer
+        // Add North Dakota voting districts layer
         districtLayer = L.esri.featureLayer({
             url: FEATURE_SERVICE_URL,
-            where: "STATE='36'",  // Filter to New York only
+            where: "STATE='38'",  // Filter to North Dakota only
             simplifyFactor: 0.75,
             precision: 4,
             style: styleDistrict,
@@ -85,7 +85,7 @@
             showError('Failed to load voting districts. Please try refreshing the page.');
         });
 
-        console.log('Map initialized with New York districts');
+        console.log('Map initialized with North Dakota districts');
     }
 
     function styleDistrict(feature) {
@@ -170,7 +170,7 @@
             <button class="vde-close-btn" onclick="this.parentElement.remove();">&times;</button>
             <div class="vde-district-name">${districtName}</div>
             <p class="vde-geoid">GEOID: ${geoid}</p>
-            <p><strong>State:</strong> New York</p>
+            <p><strong>State:</strong> North Dakota</p>
             <p><strong>County FIPS:</strong> ${county}</p>
             <p><strong>VTD Code:</strong> ${vtd}</p>
             <p><strong>Population:</strong> ${population}</p>
@@ -254,7 +254,7 @@
     function convertToKML(feature) {
         const props = feature.properties;
         const name = props.NAME || 'Voting District';
-        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: New York\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
+        const description = `GEOID: ${props.GEOID || 'N/A'}\nState: North Dakota\nPopulation: ${props.POP100 ? props.POP100.toLocaleString() : 'N/A'}`;
 
         let coordinates = '';
         if (feature.geometry.type === 'Polygon') {
@@ -350,7 +350,7 @@ ${trackPoints}
         loading.className = 'vde-loading';
         loading.innerHTML = `
             <div class="vde-loading-spinner"></div>
-            <div class="vde-loading-text">Loading New York Voting Districts</div>
+            <div class="vde-loading-text">Loading North Dakota Voting Districts</div>
             <div class="vde-loading-subtext">Fetching precinct data from U.S. Census Bureau...</div>
         `;
         document.getElementById('vde-container').appendChild(loading);
