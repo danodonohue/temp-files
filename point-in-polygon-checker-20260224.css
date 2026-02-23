@@ -1,0 +1,439 @@
+#point-in-polygon-checker-container {
+  width: 100%;
+  max-width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+#point-in-polygon-checker-container * {
+  box-sizing: border-box;
+}
+
+#pip-panel {
+  background: #1a2035;
+  padding: 16px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #2d3748;
+  border-bottom: none;
+}
+
+#pip-panel-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 600px) {
+  #pip-panel-top { grid-template-columns: 1fr; }
+}
+
+#point-in-polygon-checker-container .pip-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #718096;
+  margin-bottom: 8px;
+}
+
+#point-in-polygon-checker-container .pip-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+#point-in-polygon-checker-container .pip-tab {
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid #2d3748;
+  background: transparent;
+  color: #718096;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+
+#point-in-polygon-checker-container .pip-tab.active {
+  background: #2b6cb0;
+  border-color: #2b6cb0;
+  color: #fff;
+}
+
+#pip-upload-area {
+  border: 2px dashed #2d3748;
+  border-radius: 6px;
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #718096;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#pip-upload-area:hover,
+#pip-upload-area.drag-over {
+  border-color: #3b82f6;
+  color: #93c5fd;
+  background: rgba(59,130,246,0.05);
+}
+
+#pip-upload-area.loaded {
+  border-color: #38a169;
+  color: #68d391;
+}
+
+#pip-file-input { display: none; }
+
+#pip-points-upload-section .pip-points-upload-area {
+  border: 2px dashed #2d3748;
+  border-radius: 6px;
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #718096;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#pip-points-upload-section .pip-points-upload-area:hover,
+#pip-points-upload-section .pip-points-upload-area.drag-over {
+  border-color: #3b82f6;
+  color: #93c5fd;
+  background: rgba(59,130,246,0.05);
+}
+
+#pip-paste-section {
+  display: none;
+}
+
+#pip-paste-area {
+  width: 100%;
+  min-height: 80px;
+  background: #0f1623;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  color: #a0aec0;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 8px;
+  resize: vertical;
+}
+
+#pip-paste-area:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+#point-in-polygon-checker-container .pip-input-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+#pip-points-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#pip-click-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f1623;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  user-select: none;
+}
+
+#pip-click-toggle.active {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.07);
+}
+
+#pip-click-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4a5568;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+#pip-click-toggle.active #pip-click-dot {
+  background: #22c55e;
+}
+
+#pip-click-label {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+#pip-click-toggle.active #pip-click-label {
+  color: #e2e8f0;
+}
+
+#pip-manual-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+#point-in-polygon-checker-container .pip-coord-input {
+  flex: 1;
+  background: #0f1623;
+  border: 1px solid #2d3748;
+  border-radius: 4px;
+  color: #e2e8f0;
+  padding: 6px 8px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+#point-in-polygon-checker-container .pip-coord-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+#point-in-polygon-checker-container .pip-coord-input::placeholder {
+  color: #4a5568;
+}
+
+#pip-csv-section {
+  display: none;
+}
+
+#pip-csv-area {
+  width: 100%;
+  min-height: 70px;
+  background: #0f1623;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  color: #a0aec0;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 8px;
+  resize: vertical;
+}
+
+#pip-csv-area:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+#point-in-polygon-checker-container .pip-points-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+#pip-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid #2d3748;
+}
+
+#pip-status {
+  font-size: 12px;
+  color: #a0aec0;
+  margin-left: auto;
+}
+
+#pip-status.success { color: #68d391; }
+#pip-status.error   { color: #fc8181; }
+
+#point-in-polygon-checker-map {
+  width: 100%;
+  height: 480px;
+  border: 1px solid #2d3748;
+  border-top: none;
+  border-bottom: none;
+  cursor: crosshair;
+}
+
+#point-in-polygon-checker-map.normal-cursor {
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  #point-in-polygon-checker-map { height: 340px; }
+}
+
+#pip-results {
+  background: #1a2035;
+  border: 1px solid #2d3748;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 14px 16px;
+  display: none;
+}
+
+#pip-results.visible { display: block; }
+
+#pip-summary {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+#point-in-polygon-checker-container .pip-summary-chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#point-in-polygon-checker-container .pip-chip-total {
+  background: #2d3748;
+  color: #e2e8f0;
+}
+
+#point-in-polygon-checker-container .pip-chip-inside {
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.3);
+}
+
+#point-in-polygon-checker-container .pip-chip-outside {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+#pip-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+#pip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+#pip-table th {
+  text-align: left;
+  padding: 6px 10px;
+  color: #718096;
+  border-bottom: 1px solid #2d3748;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#pip-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #1e2740;
+  color: #cbd5e0;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+#pip-table tr:last-child td { border-bottom: none; }
+
+#pip-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+#point-in-polygon-checker-container .pip-status-inside {
+  color: #22c55e;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+#point-in-polygon-checker-container .pip-status-outside {
+  color: #ef4444;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+#point-in-polygon-checker-container .pip-row-remove {
+  background: transparent;
+  border: none;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 13px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+#point-in-polygon-checker-container .pip-row-remove:hover { color: #fc8181; }
+
+#pip-download-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#point-in-polygon-checker-container .pip-btn {
+  padding: 7px 14px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s;
+  white-space: nowrap;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+#point-in-polygon-checker-container .pip-btn-primary {
+  background: #2b6cb0;
+  color: #fff;
+}
+
+#point-in-polygon-checker-container .pip-btn-primary:hover { background: #2c5282; }
+
+#point-in-polygon-checker-container .pip-btn-primary:disabled {
+  background: #2d3748;
+  color: #4a5568;
+  cursor: not-allowed;
+}
+
+#point-in-polygon-checker-container .pip-btn-secondary {
+  background: #2d3748;
+  color: #a0aec0;
+}
+
+#point-in-polygon-checker-container .pip-btn-secondary:hover {
+  background: #374151;
+  color: #e2e8f0;
+}
+
+#point-in-polygon-checker-container .pip-btn-success {
+  background: #276749;
+  color: #fff;
+}
+
+#point-in-polygon-checker-container .pip-btn-success:hover { background: #22543d; }
+
+#point-in-polygon-checker-container .pip-btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+#point-in-polygon-checker-container .pip-btn-danger {
+  background: #742a2a;
+  color: #feb2b2;
+}
+
+#point-in-polygon-checker-container .pip-btn-danger:hover { background: #63171b; }
