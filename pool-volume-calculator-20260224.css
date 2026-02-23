@@ -1,0 +1,310 @@
+/* Pool Volume Calculator — all rules scoped to wrapper ID */
+
+#pool-volume-calculator-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  color: #1a1a2e;
+}
+
+/* Toolbar */
+#pool-volume-calculator-container .pvc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #1a1a2e;
+  border-radius: 8px 8px 0 0;
+  flex-wrap: wrap;
+}
+
+#pool-volume-calculator-container .pvc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+#pool-volume-calculator-container .pvc-btn:active {
+  transform: scale(0.97);
+}
+
+#pool-volume-calculator-container .pvc-btn-draw {
+  background: #00b4d8;
+  color: #fff;
+}
+
+#pool-volume-calculator-container .pvc-btn-draw:hover {
+  background: #0096c7;
+}
+
+#pool-volume-calculator-container .pvc-btn-draw.active {
+  background: #f77f00;
+}
+
+#pool-volume-calculator-container .pvc-btn-rect {
+  background: #4cc9f0;
+  color: #fff;
+}
+
+#pool-volume-calculator-container .pvc-btn-rect:hover {
+  background: #3ab8de;
+}
+
+#pool-volume-calculator-container .pvc-btn-rect.active {
+  background: #f77f00;
+}
+
+#pool-volume-calculator-container .pvc-btn-clear {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#pool-volume-calculator-container .pvc-btn-clear:hover {
+  background: #333;
+  color: #fff;
+}
+
+#pool-volume-calculator-container .pvc-btn-units {
+  background: #16213e;
+  color: #90e0ef;
+  border: 1px solid #00b4d8;
+}
+
+#pool-volume-calculator-container .pvc-btn-units:hover {
+  background: #0f3460;
+}
+
+#pool-volume-calculator-container .pvc-btn-units.metric {
+  background: #0d3b2e;
+  color: #80ffdb;
+  border-color: #80ffdb;
+}
+
+#pool-volume-calculator-container .pvc-btn-units.metric:hover {
+  background: #155c47;
+}
+
+#pool-volume-calculator-container .pvc-hint {
+  font-size: 13px;
+  color: #aaa;
+  margin-left: auto;
+}
+
+/* Map */
+#pool-volume-calculator-map {
+  width: 100%;
+  height: 500px;
+  min-height: 300px;
+}
+
+#pool-volume-calculator-container .leaflet-container {
+  font-family: inherit;
+}
+
+/* Results Panel */
+#pool-volume-calculator-container .pvc-results {
+  background: #f8faff;
+  border: 1px solid #d0dff0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 16px 20px;
+}
+
+#pool-volume-calculator-container .pvc-results-placeholder {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+#pool-volume-calculator-container .pvc-results-grid {
+  display: none;
+  gap: 16px;
+  align-items: start;
+}
+
+#pool-volume-calculator-container .pvc-results-grid.visible {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+}
+
+#pool-volume-calculator-container .pvc-result-card {
+  background: #fff;
+  border: 1px solid #e0ecff;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+#pool-volume-calculator-container .pvc-result-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+#pool-volume-calculator-container .pvc-result-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00b4d8;
+  line-height: 1.1;
+}
+
+#pool-volume-calculator-container .pvc-result-sub {
+  font-size: 13px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* Depth inputs card */
+#pool-volume-calculator-container .pvc-depth-card {
+  background: #fff;
+  border: 1px solid #e0ecff;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+/* Flat / sloped segmented toggle */
+#pool-volume-calculator-container .pvc-depth-mode-row {
+  display: flex;
+  gap: 0;
+  margin: 6px 0 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #c0d4f0;
+}
+
+#pool-volume-calculator-container .pvc-depth-mode-btn {
+  flex: 1;
+  padding: 5px 10px;
+  background: #f4f8ff;
+  color: #558;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+#pool-volume-calculator-container .pvc-depth-mode-btn + .pvc-depth-mode-btn {
+  border-left: 1px solid #c0d4f0;
+}
+
+#pool-volume-calculator-container .pvc-depth-mode-btn.pvc-mode-active {
+  background: #00b4d8;
+  color: #fff;
+}
+
+#pool-volume-calculator-container .pvc-depth-mode-btn:not(.pvc-mode-active):hover {
+  background: #ddeeff;
+}
+
+#pool-volume-calculator-container .pvc-depth-fields {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+#pool-volume-calculator-container .pvc-depth-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+#pool-volume-calculator-container .pvc-depth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#pool-volume-calculator-container .pvc-depth-field label {
+  font-size: 11px;
+  color: #555;
+  font-weight: 600;
+}
+
+#pool-volume-calculator-container .pvc-depth-input {
+  width: 80px;
+  padding: 6px 8px;
+  border: 1px solid #c0d4f0;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: right;
+}
+
+#pool-volume-calculator-container .pvc-depth-input:focus {
+  outline: none;
+  border-color: #00b4d8;
+}
+
+/* Share button */
+#pool-volume-calculator-container .pvc-btn-share {
+  background: #fff;
+  color: #00b4d8;
+  border: 1.5px solid #00b4d8;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  align-self: center;
+  margin-top: 10px;
+}
+
+#pool-volume-calculator-container .pvc-btn-share:hover {
+  background: #e8f9fd;
+}
+
+/* Drawing active state indicator */
+#pool-volume-calculator-container .pvc-drawing-banner {
+  display: none;
+  background: #f77f00;
+  color: #fff;
+  text-align: center;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#pool-volume-calculator-container .pvc-drawing-banner.visible {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  #pool-volume-calculator-map {
+    height: 380px;
+  }
+
+  #pool-volume-calculator-container .pvc-results-grid.visible {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #pool-volume-calculator-container .pvc-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #pool-volume-calculator-container .pvc-results-grid.visible {
+    grid-template-columns: 1fr;
+  }
+}
