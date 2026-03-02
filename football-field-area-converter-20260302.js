@@ -170,7 +170,14 @@
   });
 
   // --- Geocoder ---
-  var searchInput = document.getElementById('ffc-search-input');
+  // Create search input dynamically (WordPress strips <input> from post content)
+  var searchWrap = document.getElementById('ffc-search-wrap');
+  var searchInput = document.createElement('input');
+  searchInput.id = 'ffc-search-input';
+  searchInput.type = 'text';
+  searchInput.placeholder = 'Search a location...';
+  searchInput.autocomplete = 'off';
+  searchWrap.insertBefore(searchInput, searchWrap.firstChild);
   var searchResults = document.getElementById('ffc-search-results');
   var searchTimeout;
 
