@@ -1,0 +1,240 @@
+#football-field-area-converter-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#ffc-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+#ffc-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+
+#ffc-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  outline: none;
+}
+
+#ffc-search-input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
+}
+
+#ffc-search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: none;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+#ffc-search-results li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+#ffc-search-results li:last-child {
+  border-bottom: none;
+}
+
+#ffc-search-results li:hover {
+  background: #f0fdf4;
+}
+
+.ffc-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+#ffc-toggle-layer {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+#ffc-toggle-layer:hover {
+  background: #d1d5db;
+}
+
+#ffc-share {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+#ffc-share:hover {
+  background: #bfdbfe;
+}
+
+#ffc-share.copied {
+  background: #dcfce7;
+  color: #166534;
+}
+
+#ffc-clear {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+#ffc-clear:hover {
+  background: #fecaca;
+}
+
+#football-field-area-converter-map {
+  width: 100%;
+  height: 520px;
+  min-height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#ffc-results-panel {
+  margin-top: 16px;
+}
+
+#ffc-empty {
+  text-align: center;
+  padding: 28px 24px;
+  color: #6b7280;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 2px dashed #d1d5db;
+  line-height: 1.5;
+}
+
+#ffc-results {
+  display: none;
+}
+
+.ffc-hero {
+  background: linear-gradient(135deg, #14532d 0%, #166534 60%, #15803d 100%);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ffc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 9%,
+    rgba(255, 255, 255, 0.04) 9%,
+    rgba(255, 255, 255, 0.04) 10%
+  );
+  pointer-events: none;
+}
+
+.ffc-hero-label-top {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.ffc-field-count {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ffc-field-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.ffc-field-note {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  margin-top: 10px;
+}
+
+.ffc-conversions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.ffc-conversion-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.ffc-conversion-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  word-break: break-all;
+}
+
+.ffc-conversion-unit {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+#ffc-hint {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #football-field-area-converter-map {
+    height: 380px;
+  }
+
+  .ffc-field-count {
+    font-size: 3rem;
+  }
+
+  .ffc-conversions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
