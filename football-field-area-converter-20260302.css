@@ -3,6 +3,7 @@
   max-width: 100%;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
 #ffc-controls {
