@@ -1,0 +1,409 @@
+#graduated-symbol-map-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 580px;
+}
+
+#graduated-symbol-map-sidebar {
+  width: 272px;
+  min-width: 272px;
+  max-width: 272px;
+  overflow-y: auto;
+  background: #f4f5f7;
+  border-right: 1px solid #d0d0d0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#graduated-symbol-map-map {
+  flex: 1 1 0;
+  min-height: 500px;
+  min-width: 0;
+}
+
+/* Sections */
+#graduated-symbol-map-sidebar .gsm-section {
+  background: #fff;
+  border: 1px solid #e2e4e8;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#graduated-symbol-map-sidebar .gsm-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+
+/* Textarea */
+#graduated-symbol-map-csv-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 110px;
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #111;
+  background: #fafafa;
+}
+
+#graduated-symbol-map-csv-input:focus {
+  outline: none;
+  border-color: #4f80c8;
+  background: #fff;
+}
+
+/* Button row */
+#graduated-symbol-map-btn-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#graduated-symbol-map-sidebar button {
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+#graduated-symbol-map-load-btn {
+  background: #1d4ed8;
+  color: #fff;
+  border-color: #1d4ed8;
+  flex: 1;
+}
+
+#graduated-symbol-map-load-btn:hover {
+  background: #1e40af;
+}
+
+#graduated-symbol-map-sample-btn {
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+#graduated-symbol-map-sample-btn:hover {
+  background: #e5e7eb;
+}
+
+#graduated-symbol-map-download-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+#graduated-symbol-map-download-format {
+  flex: 1;
+  padding: 5px 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 13px;
+  color: #111;
+}
+
+#graduated-symbol-map-download-btn {
+  background: #065f46;
+  color: #fff;
+  border-color: #065f46;
+  padding: 7px 12px;
+  white-space: nowrap;
+}
+
+#graduated-symbol-map-download-btn:hover {
+  background: #047857;
+}
+
+/* File input */
+#graduated-symbol-map-file-label {
+  display: block;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 2px dashed #93c5fd;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+#graduated-symbol-map-file-label:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+#graduated-symbol-map-file-input {
+  display: none;
+}
+
+/* Status */
+#graduated-symbol-map-status {
+  font-size: 12px;
+  min-height: 16px;
+  color: #27ae60;
+}
+
+/* Field rows */
+#graduated-symbol-map-sidebar .gsm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#graduated-symbol-map-sidebar .gsm-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+#graduated-symbol-map-sidebar select,
+#graduated-symbol-map-sidebar input[type="range"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#graduated-symbol-map-sidebar select {
+  padding: 5px 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 13px;
+  color: #111;
+}
+
+#graduated-symbol-map-sidebar select:focus {
+  outline: none;
+  border-color: #4f80c8;
+}
+
+/* Color + radius row */
+#graduated-symbol-map-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#graduated-symbol-map-color-row label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+#graduated-symbol-map-color {
+  width: 40px;
+  height: 28px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+  background: #fff;
+}
+
+#graduated-symbol-map-radius-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#graduated-symbol-map-radius-label label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+#graduated-symbol-map-radius-label span {
+  font-size: 12px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+#graduated-symbol-map-classes-row {
+  align-items: center;
+  gap: 8px;
+}
+
+#graduated-symbol-map-classes-row label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+#graduated-symbol-map-classes-row select {
+  width: auto;
+  flex: 1;
+}
+
+/* Icon search & category filter */
+#graduated-symbol-map-icon-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #111;
+  background: #fff;
+}
+
+#graduated-symbol-map-icon-search:focus {
+  outline: none;
+  border-color: #4f80c8;
+}
+
+#graduated-symbol-map-icon-cat {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 13px;
+  color: #111;
+}
+
+/* Symbol picker grid */
+#graduated-symbol-map-symbol-picker {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  max-height: 192px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.graduated-symbol-map-symbol-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  background: #f3f4f6;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+}
+
+.graduated-symbol-map-symbol-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+  color: #111;
+}
+
+.graduated-symbol-map-symbol-btn.gsm-symbol-active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+/* Marker — reset Leaflet divIcon white box */
+.graduated-symbol-map-marker {
+  background: none !important;
+  border: none !important;
+}
+
+.graduated-symbol-map-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.9));
+}
+
+/* Legend icon cell */
+.graduated-symbol-map-legend-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Legend */
+#graduated-symbol-map-legend {
+  font-size: 12px;
+}
+
+.graduated-symbol-map-legend-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.graduated-symbol-map-legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.graduated-symbol-map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.graduated-symbol-map-legend-item svg {
+  flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  #graduated-symbol-map-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  #graduated-symbol-map-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  #graduated-symbol-map-map {
+    min-height: 360px;
+  }
+
+  #graduated-symbol-map-csv-input {
+    height: 80px;
+  }
+}
