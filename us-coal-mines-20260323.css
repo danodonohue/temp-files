@@ -1,0 +1,165 @@
+#us-coal-mines-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#us-coal-mines-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.us-coal-mines-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.us-coal-mines-control-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+}
+
+.us-coal-mines-btn-group {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.us-coal-mines-btn-group button {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  border: 1px solid #bbb;
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.us-coal-mines-btn-group button:hover {
+  background: #e0e8f0;
+}
+
+.us-coal-mines-btn-group button.active {
+  background: #2c5f8a;
+  color: #fff;
+  border-color: #2c5f8a;
+}
+
+#us-coal-mines-count {
+  font-size: 0.8rem;
+  color: #666;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#us-coal-mines-map {
+  width: 100%;
+  height: 520px;
+  min-height: 300px;
+}
+
+#us-coal-mines-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-top: none;
+  font-size: 0.78rem;
+  color: #444;
+  align-items: center;
+  border-radius: 0 0 4px 4px;
+}
+
+.us-coal-mines-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.us-coal-mines-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.25);
+  flex-shrink: 0;
+}
+
+.us-coal-mines-legend-note {
+  color: #888;
+  font-style: italic;
+}
+
+.us-coal-mines-legend-source {
+  margin-left: auto;
+  color: #999;
+  font-size: 0.72rem;
+}
+
+.us-coal-mines-popup strong {
+  font-size: 0.88rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.us-coal-mines-popup-type {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.us-coal-mines-type-surface {
+  background: #FFF0CC;
+  color: #CC5500;
+}
+
+.us-coal-mines-type-underground {
+  background: #CCF0FF;
+  color: #005588;
+}
+
+.us-coal-mines-popup-state {
+  color: #555;
+  font-size: 0.82rem;
+  margin-bottom: 3px;
+}
+
+.us-coal-mines-popup-period {
+  color: #888;
+  font-size: 0.75rem;
+  margin-top: 3px;
+}
+
+@media (max-width: 600px) {
+  #us-coal-mines-map {
+    height: 380px;
+  }
+
+  #us-coal-mines-count {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .us-coal-mines-legend-source {
+    margin-left: 0;
+    width: 100%;
+  }
+}
