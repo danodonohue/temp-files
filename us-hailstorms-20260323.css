@@ -1,0 +1,171 @@
+#us-hailstorms-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#us-hailstorms-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.us-hailstorms-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.us-hailstorms-control-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.us-hailstorms-btn-group {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.us-hailstorms-btn-group button {
+  padding: 4px 9px;
+  font-size: 0.75rem;
+  border: 1px solid #bbb;
+  background: #fff;
+  color: #333;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.us-hailstorms-btn-group button:hover {
+  background: #f0e8e8;
+}
+
+.us-hailstorms-btn-group button.active {
+  background: #c32f27;
+  color: #fff;
+  border-color: #c32f27;
+}
+
+#us-hailstorms-count {
+  font-size: 0.78rem;
+  color: #666;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#us-hailstorms-map {
+  width: 100%;
+  height: 530px;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+#us-hailstorms-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-top: none;
+  font-size: 0.74rem;
+  color: #444;
+  align-items: center;
+  border-radius: 0 0 4px 4px;
+}
+
+.us-hailstorms-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.us-hailstorms-dot {
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.us-hailstorms-legend-note {
+  color: #888;
+  font-style: italic;
+  font-size: 0.7rem;
+}
+
+.us-hailstorms-legend-source {
+  margin-left: auto;
+  color: #999;
+  font-size: 0.7rem;
+}
+
+.us-hailstorms-popup {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.us-hailstorms-popup-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.us-hailstorms-popup table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.us-hailstorms-popup table td {
+  padding: 2px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.us-hailstorms-popup table tr:last-child td {
+  border-bottom: none;
+}
+
+.us-hailstorms-popup table td:first-child {
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+  padding-right: 10px;
+  min-width: 90px;
+}
+
+@media (max-width: 600px) {
+  #us-hailstorms-map {
+    height: 380px;
+  }
+
+  #us-hailstorms-count {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .us-hailstorms-legend-source {
+    margin-left: 0;
+    width: 100%;
+  }
+}
