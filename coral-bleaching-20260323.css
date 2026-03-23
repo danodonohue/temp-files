@@ -1,0 +1,178 @@
+#coral-bleaching-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#coral-bleaching-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #e8f4f8;
+  border: 1px solid #b0d4e8;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.coral-bleaching-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.coral-bleaching-control-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1a4a6b;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.coral-bleaching-btn-group {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.coral-bleaching-btn-group button {
+  padding: 4px 9px;
+  font-size: 0.75rem;
+  border: 1px solid #90bbd4;
+  background: #fff;
+  color: #1a4a6b;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.coral-bleaching-btn-group button:hover {
+  background: #d0eaf7;
+}
+
+.coral-bleaching-btn-group button.active {
+  background: #0077be;
+  color: #fff;
+  border-color: #0077be;
+}
+
+#coral-bleaching-map {
+  width: 100%;
+  height: 530px;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+#coral-bleaching-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 8px 12px;
+  background: #e8f4f8;
+  border: 1px solid #b0d4e8;
+  border-top: none;
+  font-size: 0.74rem;
+  color: #1a4a6b;
+  align-items: center;
+  border-radius: 0 0 4px 4px;
+}
+
+.coral-bleaching-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coral-bleaching-dot {
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.coral-bleaching-legend-note {
+  color: #5a8aa8;
+  font-style: italic;
+  font-size: 0.7rem;
+}
+
+.coral-bleaching-legend-source {
+  margin-left: auto;
+  color: #7aaac8;
+  font-size: 0.7rem;
+}
+
+.coral-bleaching-popup strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #1a3a5a;
+  margin-bottom: 5px;
+}
+
+.coral-bleaching-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.coral-bleaching-popup table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.79rem;
+}
+
+.coral-bleaching-popup table td {
+  padding: 2px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid #eef2f6;
+  color: #333;
+}
+
+.coral-bleaching-popup table tr:last-child td {
+  border-bottom: none;
+}
+
+.coral-bleaching-popup table td:first-child {
+  font-weight: 600;
+  color: #5a7a9a;
+  white-space: nowrap;
+  padding-right: 10px;
+  min-width: 80px;
+}
+
+.coral-bleaching-popup-link {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid #eef2f6;
+  font-size: 0.78rem;
+}
+
+.coral-bleaching-popup-link a {
+  color: #0077be;
+  text-decoration: none;
+}
+
+.coral-bleaching-popup-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #coral-bleaching-map {
+    height: 380px;
+  }
+
+  .coral-bleaching-legend-source {
+    margin-left: 0;
+    width: 100%;
+  }
+}
