@@ -1,0 +1,152 @@
+#qf-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+#qf-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 14px;
+    background: #1a1a2e;
+    color: #fff;
+}
+
+.qf-control-group {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.qf-control-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #b0b0cc;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+#qf-controls select {
+    background: #2a2a45;
+    color: #fff;
+    border: 1px solid #484868;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.88rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#qf-controls select:hover,
+#qf-controls select:focus {
+    border-color: #7080cc;
+}
+
+#qf-fault-info {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: #888aa8;
+}
+
+#qf-fault-info span {
+    color: #a0c0ff;
+    font-weight: 600;
+}
+
+#qf-map-wrapper {
+    position: relative;
+}
+
+#qf-map {
+    width: 100%;
+    height: 560px;
+    min-height: 300px;
+    background: #e8e8e8;
+}
+
+#qf-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.92);
+    color: #333;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    pointer-events: none;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.qf-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0,0,0,0.15);
+    border-top-color: #555;
+    border-radius: 50%;
+    animation: qf-spin 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes qf-spin {
+    to { transform: rotate(360deg); }
+}
+
+#qf-legend {
+    position: absolute;
+    bottom: 28px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 6px;
+    padding: 10px 14px;
+    z-index: 900;
+    color: #222;
+    font-size: 0.77rem;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#qf-legend h4 {
+    margin: 0 0 7px;
+    font-size: 0.72rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.qf-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.qf-legend-swatch {
+    width: 22px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+    #qf-map { height: 380px; }
+    #qf-controls { padding: 8px 10px; gap: 8px; }
+    #qf-fault-info { width: 100%; margin-left: 0; }
+    #qf-legend { font-size: 0.7rem; padding: 8px 10px; min-width: 170px; }
+}
