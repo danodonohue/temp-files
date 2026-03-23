@@ -1,0 +1,165 @@
+#marine-tracklines-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#marine-tracklines-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f0f5fa;
+  border: 1px solid #c0d4e8;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.marine-tracklines-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.marine-tracklines-control-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2a4a6b;
+  white-space: nowrap;
+}
+
+.marine-tracklines-btn-group {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.marine-tracklines-btn-group button {
+  padding: 4px 10px;
+  font-size: 0.77rem;
+  border: 1px solid #a0bcd4;
+  background: #fff;
+  color: #2a4a6b;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.marine-tracklines-btn-group button:hover {
+  background: #ddeaf5;
+}
+
+.marine-tracklines-btn-group button.active {
+  background: #1a6ea3;
+  color: #fff;
+  border-color: #1a6ea3;
+}
+
+#marine-tracklines-status {
+  font-size: 0.78rem;
+  color: #666;
+  font-style: italic;
+  margin-left: auto;
+}
+
+#marine-tracklines-map {
+  width: 100%;
+  height: 530px;
+  min-height: 300px;
+  box-sizing: border-box;
+  cursor: crosshair;
+}
+
+#marine-tracklines-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 7px 12px;
+  background: #f0f5fa;
+  border: 1px solid #c0d4e8;
+  border-top: none;
+  font-size: 0.74rem;
+  color: #4a6a8a;
+  align-items: center;
+  border-radius: 0 0 4px 4px;
+}
+
+#marine-tracklines-footer-note {
+  color: #7a9ab8;
+  font-style: italic;
+}
+
+#marine-tracklines-footer-source {
+  margin-left: auto;
+  color: #9ab8cc;
+  font-size: 0.7rem;
+}
+
+.marine-tracklines-popup strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #1a3a5a;
+  margin-bottom: 6px;
+}
+
+.marine-tracklines-popup table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.79rem;
+}
+
+.marine-tracklines-popup table td {
+  padding: 2px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid #eef2f6;
+  color: #333;
+}
+
+.marine-tracklines-popup table tr:last-child td {
+  border-bottom: none;
+}
+
+.marine-tracklines-popup table td:first-child {
+  font-weight: 600;
+  color: #5a7a9a;
+  white-space: nowrap;
+  padding-right: 10px;
+  min-width: 80px;
+}
+
+.marine-tracklines-popup-dl {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid #eef2f6;
+  font-size: 0.78rem;
+}
+
+.marine-tracklines-popup-dl a {
+  color: #1a6ea3;
+  text-decoration: none;
+}
+
+.marine-tracklines-popup-dl a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #marine-tracklines-map {
+    height: 380px;
+  }
+
+  #marine-tracklines-status {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #marine-tracklines-footer-source {
+    margin-left: 0;
+    width: 100%;
+  }
+}
