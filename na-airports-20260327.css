@@ -1,0 +1,121 @@
+#na-airports-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+#na-airports-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+#na-airports-controls label {
+  font-size: 0.82rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+#na-airports-controls select {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  color: #111827;
+}
+
+#na-airports-controls select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#na-airports-count {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-left: auto;
+}
+
+#na-airports-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+#na-airports-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 10px 0 4px;
+  font-size: 0.75rem;
+  color: #374151;
+}
+
+.nap-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.nap-legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.na-airports-popup .nap-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.na-airports-popup .nap-loc {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.na-airports-popup .nap-type {
+  font-size: 0.78rem;
+  color: #6b7280;
+  font-style: italic;
+  margin: 3px 0;
+}
+
+.na-airports-popup .nap-codes {
+  font-size: 0.8rem;
+  color: #374151;
+  font-family: monospace;
+}
+
+.na-airports-popup .nap-elev {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  #na-airports-map {
+    height: 380px;
+  }
+
+  #na-airports-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #na-airports-count {
+    margin-left: 0;
+  }
+}
