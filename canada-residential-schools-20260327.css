@@ -1,0 +1,117 @@
+#canada-residential-schools-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+#crs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #2d2d2d;
+  color: #fff;
+}
+
+#crs-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 340px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.85rem;
+  background: #f5f5f5;
+  color: #222;
+}
+
+#crs-search::placeholder {
+  color: #888;
+}
+
+#crs-count {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: #999;
+  white-space: nowrap;
+}
+
+.crs-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c0392b;
+  border: 1.5px solid rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+}
+
+#canada-residential-schools-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+}
+
+.crs-popup strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 3px;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.crs-alt {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 7px;
+}
+
+.crs-popup table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
+.crs-popup th {
+  text-align: left;
+  padding: 2px 10px 2px 0;
+  color: #555;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.crs-popup td {
+  padding: 2px 0;
+  color: #222;
+}
+
+.crs-link {
+  display: inline-block;
+  font-size: 0.79rem;
+  color: #7b3b3b;
+  text-decoration: none;
+  border-top: 1px solid #eee;
+  padding-top: 7px;
+  width: 100%;
+}
+
+.crs-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #canada-residential-schools-map {
+    height: 400px;
+  }
+  #crs-toolbar {
+    padding: 8px 10px;
+  }
+  #crs-search {
+    max-width: 100%;
+  }
+}
