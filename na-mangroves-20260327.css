@@ -1,0 +1,99 @@
+#na-mangroves-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+#na-mangroves-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+#na-mangroves-controls label {
+  font-size: 0.82rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+#na-mangroves-controls select {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  color: #111827;
+}
+
+#na-mangroves-controls select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+#na-mangroves-status {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-left: auto;
+}
+
+#na-mangroves-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+#na-mangroves-note {
+  font-size: 0.75rem;
+  color: #6b7280;
+  padding: 8px 0 4px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.na-mangroves-popup .nam-location {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.na-mangroves-popup .nam-source {
+  font-size: 0.8rem;
+  color: #374151;
+  margin-bottom: 3px;
+}
+
+.na-mangroves-popup .nam-area {
+  font-size: 0.8rem;
+  color: #065f46;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.na-mangroves-popup .nam-meta {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  #na-mangroves-map {
+    height: 380px;
+  }
+
+  #na-mangroves-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #na-mangroves-status {
+    margin-left: 0;
+  }
+}
