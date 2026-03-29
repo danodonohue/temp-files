@@ -1,0 +1,127 @@
+#offshore-oil-platform-map-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #3e1f00;
+}
+
+#offshore-oil-platform-map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: #1a0d00;
+}
+
+.opm-label {
+  color: #ffcc80;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.opm-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.opm-cb-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ede0d4;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 3px 9px 3px 6px;
+  border-radius: 4px;
+  border: 1px solid #3e2000;
+  background: #2a1200;
+  user-select: none;
+}
+
+.opm-cb-label:hover {
+  background: #3e1f00;
+}
+
+.opm-cb-label input[type="checkbox"] {
+  cursor: pointer;
+  width: 13px;
+  height: 13px;
+  accent-color: #f57c00;
+}
+
+.opm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+#opm-count {
+  margin-left: auto;
+  color: #ffcc80;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+#opm-share-btn {
+  padding: 4px 12px;
+  background: #e65100;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#opm-share-btn:hover {
+  background: #f57c00;
+}
+
+#offshore-oil-platform-map-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+}
+
+#offshore-oil-platform-map-footer {
+  padding: 6px 14px;
+  background: #1a0d00;
+  color: #8a6a50;
+  font-size: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+#offshore-oil-platform-map-footer a {
+  color: #ffb74d;
+  text-decoration: none;
+}
+
+#offshore-oil-platform-map-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #offshore-oil-platform-map-map {
+    height: 380px;
+  }
+
+  #opm-count {
+    width: 100%;
+    margin-left: 0;
+    order: 10;
+  }
+}
