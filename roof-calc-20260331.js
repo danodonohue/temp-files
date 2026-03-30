@@ -16,7 +16,6 @@
     toggleAdvanced:         toggleAdvanced,
     exportCalculations:     exportCalculations,
     saveCalculations:       saveCalculations,
-    printCalculations:      printCalculations,
     shareCalculations:      shareCalculations
   };
 
@@ -329,12 +328,64 @@
     }
   }
 
-  function printCalculations() {
-    window.print();
+  function shareCalculations() {
+    var s      = getSettings();
+    var center = map ? map.getCenter() : null;
+    var zoom   = map ? map.getZoom()   : 13;
+
+    var parts = [];
+    if (center) {
+      parts.push('lat=' + center.lat.toFixed(6));
+      parts.push('lng=' + center.lng.toFixed(6));
+      parts.push('z='   + zoom);
+    }
+    parts.push('pitch=' + s.pitch);
+    parts.push('unit='  + s.unit);
+    parts.push('waste=' + s.wastePct);
+    parts.push('eaves=' + s.eavesIn);
+
+    var hash     = '#' + parts.join('&');
+    var shareUrl = window.location.origin + window.location.pathname + hash;
+
+    history.replaceState(null, '', hash);
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareUrl)
+        .then(function () { showToast('Link copied to clipboard!'); })
+        .catch(function () { showToast('Link updated in address bar'); });
+    } else {
+      showToast('Link updated in address bar');
+    }
   }
 
-  function shareCalculations() {
-    showToast('Share feature coming soon!');
+  // ─── Restore state from URL hash ──────────────────────────────────────────
+  function loadStateFromUrl() {
+    var hash = window.location.hash.slice(1);
+    if (!hash) return false;
+
+    var params = {};
+    hash.split('&').forEach(function (pair) {
+      var idx = pair.indexOf('=');
+      if (idx < 0) return;
+      params[pair.slice(0, idx)] = decodeURIComponent(pair.slice(idx + 1));
+    });
+
+    if (params.lat && params.lng && map) {
+      map.setView([parseFloat(params.lat), parseFloat(params.lng)], parseInt(params.z) || 19);
+    }
+
+    var fieldMap = {
+      'roof-calc-pitch':          params.pitch,
+      'roof-calc-unit-select':    params.unit,
+      'roof-calc-waste-factor':   params.waste,
+      'roof-calc-eaves-overhang': params.eaves
+    };
+    Object.keys(fieldMap).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && fieldMap[id] != null) el.value = fieldMap[id];
+    });
+
+    return true;
   }
 
   // ─── Event listeners ──────────────────────────────────────────────────────
@@ -385,7 +436,7 @@
     }
     initMap();
     setupEvents();
-    loadSavedSettings();
+    if (!loadStateFromUrl()) loadSavedSettings();
   }
 
   init();
