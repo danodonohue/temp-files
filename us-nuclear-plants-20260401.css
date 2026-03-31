@@ -1,0 +1,156 @@
+#us-nuclear-plants-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+#us-nuclear-plants-controls {
+  background: #f8f8f8;
+  padding: 10px 14px;
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+
+.unp-control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#us-nuclear-plants-controls label {
+  color: #333;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin: 0;
+}
+
+#us-nuclear-plants-state-select {
+  background: #fff;
+  color: #222;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  min-width: 130px;
+}
+
+#us-nuclear-plants-state-select:focus {
+  outline: none;
+  border-color: #E07B00;
+  box-shadow: 0 0 0 2px rgba(224,123,0,0.2);
+}
+
+.unp-measure-btn {
+  background: #fff;
+  color: #333;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.unp-measure-btn:hover {
+  background: #f0f0f0;
+}
+
+.unp-measure-btn.unp-measure-active {
+  background: #2196F3;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+#us-nuclear-plants-measure-info {
+  margin-top: 7px;
+  font-size: 0.82rem;
+  color: #444;
+  min-height: 1.2em;
+}
+
+#us-nuclear-plants-measure-info em {
+  color: #888;
+}
+
+#us-nuclear-plants-measure-info strong {
+  color: #1a1a1a;
+}
+
+.unp-clear-btn {
+  background: none;
+  border: none;
+  color: #2196F3;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0 4px;
+  text-decoration: underline;
+}
+
+.unp-clear-btn:hover {
+  color: #1565c0;
+}
+
+#us-nuclear-plants-count {
+  color: #888;
+  font-size: 0.78rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#us-nuclear-plants-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  #us-nuclear-plants-map {
+    height: 400px;
+  }
+
+  #us-nuclear-plants-count {
+    margin-left: 0;
+  }
+}
+
+/* Popup styles */
+#us-nuclear-plants-map .unp-popup h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-bottom: 2px solid #FFD700;
+  padding-bottom: 5px;
+  line-height: 1.3;
+}
+
+#us-nuclear-plants-map .unp-popup table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.82rem;
+}
+
+#us-nuclear-plants-map .unp-popup table th {
+  text-align: left;
+  color: #666;
+  padding: 3px 10px 3px 0;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+#us-nuclear-plants-map .unp-popup table td {
+  color: #222;
+  padding: 3px 0;
+  vertical-align: top;
+}
