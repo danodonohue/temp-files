@@ -1,0 +1,362 @@
+#meeting-point-finder-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 15px;
+  color: #222;
+}
+
+#meeting-point-finder-container *,
+#meeting-point-finder-container *::before,
+#meeting-point-finder-container *::after {
+  box-sizing: border-box;
+}
+
+#meeting-point-finder-map {
+  width: 100%;
+  height: 500px;
+  min-height: 300px;
+  border: 1px solid #d0d0d0;
+  border-radius: 0 0 6px 6px;
+}
+
+@media (max-width: 600px) {
+  #meeting-point-finder-map {
+    height: 360px;
+  }
+}
+
+/* Controls panel */
+
+#mpf-controls {
+  background: #f7f8fa;
+  border: 1px solid #d8dce2;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 14px 16px 12px;
+}
+
+#mpf-locations-list {
+  margin-bottom: 10px;
+}
+
+.mpf-location-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.mpf-location-num {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  min-width: 62px;
+  flex-shrink: 0;
+}
+
+.mpf-addr-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.mpf-addr-input:focus {
+  outline: none;
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.18);
+}
+
+.mpf-remove-btn {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: #e0e0e0;
+  color: #555;
+  border: none;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.mpf-remove-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* Button row */
+
+#mpf-btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#mpf-add-location {
+  padding: 7px 13px;
+  background: #fff;
+  color: #4a90d9;
+  border: 1px solid #4a90d9;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#mpf-add-location:hover:not(:disabled) {
+  background: #ebf3fb;
+}
+
+#mpf-add-location:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+#mpf-find-btn {
+  padding: 8px 20px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#mpf-find-btn:hover {
+  background: #357abd;
+}
+
+#mpf-share-btn {
+  padding: 7px 13px;
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-left: auto;
+}
+
+#mpf-share-btn:hover {
+  background: #1e8449;
+}
+
+/* Options row */
+
+#mpf-options-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid #e4e6ea;
+}
+
+#mpf-options-row label {
+  font-size: 0.82rem;
+  color: #555;
+}
+
+#mpf-poi-type,
+#mpf-radius {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+/* Status line */
+
+.mpf-status {
+  font-size: 0.82rem;
+  color: #666;
+  margin-top: 7px;
+  min-height: 1.1em;
+}
+
+.mpf-status-error {
+  color: #c0392b;
+}
+
+/* Results section */
+
+#mpf-results {
+  display: none;
+  margin-top: 18px;
+}
+
+.mpf-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 14px 0 7px;
+  color: #1a1a2e;
+}
+
+.mpf-midpoint-addr {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.mpf-fairness-note {
+  font-size: 0.82rem;
+  color: #27ae60;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+/* Travel cards */
+
+.mpf-travel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.mpf-travel-card {
+  background: #f7f8fa;
+  border: 1px solid #e0e3e8;
+  border-radius: 7px;
+  padding: 11px 13px;
+}
+
+.mpf-travel-person {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4a90d9;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.mpf-travel-addr {
+  font-size: 0.82rem;
+  color: #777;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mpf-travel-drive {
+  font-size: 0.87rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.mpf-drive-time {
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* POI cards */
+
+.mpf-poi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mpf-poi-card {
+  background: #fff;
+  border: 1px solid #e4e6ea;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.mpf-poi-card:hover {
+  border-color: #4a90d9;
+  background: #f0f5fb;
+}
+
+.mpf-poi-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: #222;
+}
+
+.mpf-poi-dist {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.mpf-no-results {
+  font-size: 0.88rem;
+  color: #888;
+  font-style: italic;
+  margin: 8px 0;
+}
+
+/* Map markers */
+
+#meeting-point-finder-container .mpf-mid-dot {
+  width: 20px;
+  height: 20px;
+  background: #27ae60;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.45);
+}
+
+#meeting-point-finder-container .mpf-poi-dot {
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border: 2px solid #4a90d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #4a90d9;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  #mpf-btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #mpf-share-btn {
+    margin-left: 0;
+    text-align: center;
+  }
+  #mpf-find-btn,
+  #mpf-add-location {
+    width: 100%;
+    text-align: center;
+  }
+  .mpf-location-num {
+    min-width: 52px;
+  }
+  .mpf-travel-grid {
+    grid-template-columns: 1fr;
+  }
+}
