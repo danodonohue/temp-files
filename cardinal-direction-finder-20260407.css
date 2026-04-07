@@ -1,0 +1,236 @@
+#cardinal-direction-finder-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 15px;
+  color: #222;
+}
+
+#cardinal-direction-finder-container *,
+#cardinal-direction-finder-container *::before,
+#cardinal-direction-finder-container *::after {
+  box-sizing: border-box;
+}
+
+/* Controls */
+
+#cdf-controls {
+  background: #f7f8fa;
+  border: 1px solid #d8dce2;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 14px 16px 12px;
+}
+
+.cdf-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.cdf-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #555;
+  min-width: 40px;
+  flex-shrink: 0;
+}
+
+.cdf-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.cdf-input:focus {
+  outline: none;
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 2px rgba(74,144,217,0.18);
+}
+
+.cdf-locate-btn {
+  flex-shrink: 0;
+  padding: 7px 11px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.cdf-locate-btn:hover:not(:disabled) {
+  background: #ebf3fb;
+  border-color: #4a90d9;
+  color: #4a90d9;
+}
+
+.cdf-locate-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+#cdf-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+#cdf-find-btn {
+  padding: 8px 22px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#cdf-find-btn:hover:not(:disabled) {
+  background: #357abd;
+}
+
+#cdf-find-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#cdf-status {
+  font-size: 0.82rem;
+  color: #666;
+  min-height: 1em;
+}
+
+/* Map */
+
+#cardinal-direction-finder-map {
+  width: 100%;
+  height: 460px;
+  min-height: 300px;
+  border: 1px solid #d0d0d0;
+}
+
+@media (max-width: 600px) {
+  #cardinal-direction-finder-map {
+    height: 340px;
+  }
+}
+
+/* Result panel */
+
+#cdf-result {
+  display: none;
+  border: 1px solid #d0d0d0;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  background: #fff;
+  padding: 14px 16px 12px;
+}
+
+#cdf-dir-main {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+
+#cdf-dir-main .cdf-highlight {
+  color: #4a90d9;
+}
+
+#cdf-bearing {
+  font-size: 0.88rem;
+  color: #444;
+  margin: 0 0 3px;
+}
+
+#cdf-reverse {
+  font-size: 0.82rem;
+  color: #888;
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+#cdf-share-btn {
+  padding: 6px 14px;
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#cdf-share-btn:hover {
+  background: #1e8449;
+}
+
+/* Compass rose Leaflet control */
+
+.cdf-compass-wrap {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Markers */
+
+.cdf-marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.cdf-marker-a {
+  background: #4a90d9;
+  border: 2.5px solid #fff;
+}
+
+.cdf-marker-b {
+  background: #e74c3c;
+  border: 2.5px solid #fff;
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .cdf-input-row {
+    flex-wrap: wrap;
+  }
+  .cdf-locate-btn {
+    width: 100%;
+  }
+  #cdf-btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #cdf-find-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .cdf-label {
+    min-width: 34px;
+  }
+}
