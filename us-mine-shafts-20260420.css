@@ -1,0 +1,30 @@
+#us-mine-shafts-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+#us-mine-shafts-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 8px;
+}
+#us-mine-shafts-status { font-size: 0.85rem; color: #666; }
+#us-mine-shafts-map { width: 100%; height: 560px; overflow: hidden; }
+#us-mine-shafts-container select,
+#us-mine-shafts-container button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+#us-mine-shafts-container button { background: #2c5f8a; color: #fff; border-color: #2c5f8a; }
+#us-mine-shafts-container button:hover { background: #1e4262; }
+.us-mine-shafts-popup { max-width: 220px; font-size: 0.875rem; line-height: 1.5; }
+.us-mine-shafts-popup strong { font-size: 0.95rem; }
+.us-mine-shafts-popup em { color: #666; }
+@media (max-width: 600px) { #us-mine-shafts-map { height: 380px; } #us-mine-shafts-controls { gap: 6px; } }

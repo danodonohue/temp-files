@@ -1,0 +1,30 @@
+#us-disturbed-surfaces-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+#us-disturbed-surfaces-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 8px;
+}
+#us-disturbed-surfaces-status { font-size: 0.85rem; color: #666; }
+#us-disturbed-surfaces-map { width: 100%; height: 560px; overflow: hidden; }
+#us-disturbed-surfaces-container select,
+#us-disturbed-surfaces-container button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+#us-disturbed-surfaces-container button { background: #2c5f8a; color: #fff; border-color: #2c5f8a; }
+#us-disturbed-surfaces-container button:hover { background: #1e4262; }
+.us-disturbed-surfaces-popup { max-width: 220px; font-size: 0.875rem; line-height: 1.5; }
+.us-disturbed-surfaces-popup strong { font-size: 0.95rem; }
+.us-disturbed-surfaces-popup em { color: #666; }
+@media (max-width: 600px) { #us-disturbed-surfaces-map { height: 380px; } #us-disturbed-surfaces-controls { gap: 6px; } }
