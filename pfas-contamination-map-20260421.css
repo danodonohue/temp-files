@@ -1,0 +1,98 @@
+#pfas-contamination-map-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+#pfas-contamination-map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 10px 12px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  font-size: 0.85rem;
+}
+
+#pfas-contamination-map-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+}
+
+.pfas-label {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.pfas-select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.82rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.pfas-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+}
+
+.pfas-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: #444;
+  white-space: nowrap;
+}
+
+.pfas-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.pfas-count {
+  font-size: 0.8rem;
+  color: #666;
+  margin-left: auto;
+}
+
+.pfas-source {
+  font-size: 0.72rem;
+  color: #777;
+  width: 100%;
+}
+
+.pfas-source a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.pfas-source a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  #pfas-contamination-map-map {
+    height: 380px;
+  }
+  .pfas-count {
+    margin-left: 0;
+    width: 100%;
+  }
+}
