@@ -1,0 +1,163 @@
+#state-cell-towers-container {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #222;
+}
+
+#state-cell-towers-container * {
+  box-sizing: border-box;
+}
+
+#sct-stats-strip {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.sct-stat-box {
+  flex: 1;
+  min-width: 110px;
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.sct-stat-value {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e74c3c;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.sct-stat-sm {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.sct-stat-label {
+  display: block;
+  font-size: 0.72rem;
+  color: #aaa;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#sct-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sct-ctrl-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+#sct-carrier-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sct-loading {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.sct-chip {
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #f5f5f5;
+  color: #555;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.sct-chip:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.sct-chip.sct-chip-on {
+  background: #e74c3c;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+.sct-chip.sct-chip-on:hover {
+  background: #c0392b;
+}
+
+#sct-geo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sct-geo-btn {
+  padding: 7px 16px;
+  background: #2980b9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.sct-geo-btn:hover { background: #1a5276; }
+.sct-geo-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.sct-radius-label {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#sct-radius-input {
+  width: 60px;
+  padding: 5px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+#state-cell-towers-map {
+  width: 100%;
+  height: 540px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sct-popup {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  min-width: 180px;
+}
+
+@media (max-width: 600px) {
+  .sct-stat-box { padding: 10px 12px; }
+  .sct-stat-value { font-size: 1.2rem; }
+  #state-cell-towers-map { height: 380px; }
+  #sct-geo-section { flex-direction: column; align-items: flex-start; }
+}
