@@ -1,0 +1,356 @@
+/* =========================================================================
+   State School Districts - all styles scoped under
+   #state-school-districts-container so nothing bleeds into the WordPress
+   theme or surrounding page content.
+   ========================================================================= */
+
+#state-school-districts-container {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #2b2b2b;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+#state-school-districts-container *,
+#state-school-districts-container *::before,
+#state-school-districts-container *::after {
+  box-sizing: border-box;
+}
+
+#state-school-districts-container button,
+#state-school-districts-container input {
+  font-family: inherit;
+}
+
+/* ---------- Stats strip ---------- */
+#state-school-districts-container .ssd-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+#state-school-districts-container .ssd-stat-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px 12px;
+  text-align: left;
+  min-width: 0;
+}
+
+#state-school-districts-container .ssd-stat-value {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0b5394;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+#state-school-districts-container .sct-stat-sm,
+#state-school-districts-container .ssd-stat-sm {
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+#state-school-districts-container .ssd-stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ---------- Controls ---------- */
+#state-school-districts-container .ssd-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  background: #fafbfc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+#state-school-districts-container .ssd-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+#state-school-districts-container .ssd-search-input {
+  flex: 1 1 260px;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  background: #ffffff;
+  color: #2b2b2b;
+}
+
+#state-school-districts-container .ssd-search-input:focus {
+  outline: none;
+  border-color: #0b5394;
+  box-shadow: 0 0 0 3px rgba(11, 83, 148, 0.15);
+}
+
+#state-school-districts-container .ssd-btn {
+  padding: 8px 14px;
+  background: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+#state-school-districts-container .ssd-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #0b5394;
+  color: #0b5394;
+}
+
+#state-school-districts-container .ssd-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#state-school-districts-container .ssd-btn-primary {
+  background: #0b5394;
+  color: #ffffff;
+  border-color: #093f70;
+}
+
+#state-school-districts-container .ssd-btn-primary:hover:not(:disabled) {
+  background: #093f70;
+  border-color: #093f70;
+  color: #ffffff;
+}
+
+#state-school-districts-container .ssd-btn-ghost {
+  background: transparent;
+  border-color: #e5e7eb;
+  color: #6b7280;
+}
+
+#state-school-districts-container .ssd-search-msg {
+  flex-basis: 100%;
+  font-size: 0.78rem;
+  color: #6b7280;
+  min-height: 1em;
+}
+
+#state-school-districts-container .ssd-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+}
+
+#state-school-districts-container .ssd-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+#state-school-districts-container .ssd-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0b5394;
+  margin: 0;
+}
+
+/* ---------- Map ---------- */
+#state-school-districts-container .ssd-map-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+#state-school-districts-container .ssd-map {
+  width: 100%;
+  height: 580px;
+  overflow: hidden;
+}
+
+#state-school-districts-container .ssd-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 500;
+  text-align: center;
+  padding: 20px;
+}
+
+#state-school-districts-container .ssd-loading-title {
+  margin: 0;
+  font-weight: 600;
+  color: #374151;
+}
+
+#state-school-districts-container .ssd-loading-step {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+#state-school-districts-container .ssd-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #0b5394;
+  border-radius: 50%;
+  animation: ssd-spin 0.9s linear infinite;
+}
+
+@keyframes ssd-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Legend ---------- */
+#state-school-districts-container .ssd-legend {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: #fafbfc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+#state-school-districts-container .ssd-legend-title {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.82rem;
+}
+
+#state-school-districts-container .ssd-legend-scale {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+#state-school-districts-container .ssd-legend-scale li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#state-school-districts-container .ssd-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#state-school-districts-container .ssd-legend-note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* ---------- Popups ---------- */
+#state-school-districts-container .ssd-popup {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  min-width: 180px;
+  max-width: 280px;
+  color: #2b2b2b;
+}
+
+#state-school-districts-container .ssd-pop-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: #0b5394;
+  font-size: 0.95rem;
+}
+
+#state-school-districts-container .ssd-pop-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#state-school-districts-container .ssd-pop-stats li {
+  padding: 2px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+#state-school-districts-container .ssd-pop-stats li:last-child { border-bottom: none; }
+
+#state-school-districts-container .ssd-attrib {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+/* ---------- Cluster marker skin (tone to match palette) ---------- */
+#state-school-districts-container .marker-cluster-small {
+  background-color: rgba(245, 158, 11, 0.30);
+}
+#state-school-districts-container .marker-cluster-small div {
+  background-color: rgba(180, 83, 9, 0.85);
+  color: #ffffff;
+  font-weight: 700;
+}
+#state-school-districts-container .marker-cluster-medium {
+  background-color: rgba(180, 83, 9, 0.35);
+}
+#state-school-districts-container .marker-cluster-medium div {
+  background-color: rgba(146, 64, 14, 0.90);
+  color: #ffffff;
+  font-weight: 700;
+}
+#state-school-districts-container .marker-cluster-large {
+  background-color: rgba(146, 64, 14, 0.45);
+}
+#state-school-districts-container .marker-cluster-large div {
+  background-color: rgba(120, 53, 15, 0.95);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  #state-school-districts-container .ssd-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #state-school-districts-container .ssd-stat-box { padding: 10px 10px; }
+  #state-school-districts-container .ssd-stat-value { font-size: 1.15rem; }
+  #state-school-districts-container .ssd-map { height: 440px; }
+  #state-school-districts-container .ssd-controls { padding: 10px; }
+  #state-school-districts-container .ssd-search-input { flex-basis: 100%; }
+  #state-school-districts-container .ssd-btn { flex: 1; }
+}
