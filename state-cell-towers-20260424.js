@@ -61,7 +61,7 @@
       '<div class="sct-stat-box"><span class="sct-stat-value" data-sct="total">--</span><span class="sct-stat-label">Total Towers</span></div>' +
       '<div class="sct-stat-box"><span class="sct-stat-value sct-stat-sm" data-sct="top-carrier">--</span><span class="sct-stat-label">Top Licensee</span></div>' +
       '<div class="sct-stat-box"><span class="sct-stat-value" data-sct="counties">--</span><span class="sct-stat-label">Counties</span></div>' +
-      '<div class="sct-stat-box"><span class="sct-stat-value" data-sct="avg-height">--</span><span class="sct-stat-label">Avg Height (ft)</span></div>' +
+      '<div class="sct-stat-box"><span class="sct-stat-value" data-sct="avg-height">--</span><span class="sct-stat-label">Avg Height</span></div>' +
     '</div>' +
     '<div class="sct-controls">' +
       '<div class="sct-search-row">' +
@@ -170,16 +170,26 @@
     return STRUC_LABELS[k] || (k || 'Other');
   }
 
+  function fmtHeight(meters) {
+    var m = parseFloat(meters);
+    if (!isFinite(m) || m <= 0) return null;
+    var ft = Math.round(m * 3.28084);
+    return Math.round(m) + ' m (' + ft.toLocaleString() + ' ft)';
+  }
+
   function popupHtml(p) {
     var lines = [];
     if (p.Licensee) lines.push('<strong>' + esc(p.Licensee) + '</strong>');
     var loc = [p.LocCity, p.LocCounty].filter(Boolean).join(', ');
     if (loc) lines.push(esc(loc));
     if (p.StrucType) lines.push('Type: ' + esc(strucLabel(p.StrucType)));
-    if (p.TowReg != null && p.TowReg !== '') lines.push('Tower height: ' + esc(p.TowReg) + ' ft');
-    if (p.AllStruc != null && p.AllStruc !== '') lines.push('Overall height: ' + esc(p.AllStruc) + ' ft');
+    var allH = fmtHeight(p.AllStruc);
+    if (allH) lines.push('Overall height: ' + allH);
+    var supH = fmtHeight(p.SupStruc);
+    if (supH && (!allH || supH !== allH)) lines.push('Support structure: ' + supH);
     if (p.LicStatus) lines.push('License: ' + esc(p.LicStatus));
     if (p.Callsign) lines.push('Call sign: ' + esc(p.Callsign));
+    if (p.TowReg) lines.push('FCC ASR #: ' + esc(p.TowReg));
     return '<div class="sct-popup">' + lines.join('<br>') + '</div>';
   }
 
@@ -269,12 +279,21 @@
 
     get('top-carrier').textContent = allCarriers.length ? allCarriers[0].name : '--';
 
+    // FCC ASR heights are in METERS. AllStruc is the cleanest height field
+    // (overall structure height); fall back to SupStruc if missing. Reject
+    // zeros and obvious outliers (>700 m, taller than KVLY-TV mast).
     var heights = allFeatures.map(function (f) {
-      var h = parseFloat(f.props.TowReg);
-      return isFinite(h) && h > 0 ? h : null;
+      var h = parseFloat(f.props.AllStruc);
+      if (!isFinite(h) || h <= 0) h = parseFloat(f.props.SupStruc);
+      return isFinite(h) && h > 0 && h <= 700 ? h : null;
     }).filter(function (h) { return h !== null; });
-    var avg = heights.length ? Math.round(heights.reduce(function (a, b) { return a + b; }, 0) / heights.length) : null;
-    get('avg-height').textContent = avg !== null ? avg.toLocaleString() : '--';
+    if (heights.length) {
+      var avgM = heights.reduce(function (a, b) { return a + b; }, 0) / heights.length;
+      var avgFt = Math.round(avgM * 3.28084);
+      get('avg-height').textContent = Math.round(avgM) + ' m / ' + avgFt.toLocaleString() + ' ft';
+    } else {
+      get('avg-height').textContent = '--';
+    }
   }
 
   // ------ Carrier chips ------
@@ -488,8 +507,8 @@
   // ------ Export ------
   function exportCsv() {
     if (!selectedFeatures.length) return;
-    var cols = ['Licensee', 'Callsign', 'LocCity', 'LocCounty', 'StrucType', 'LicStatus', 'TowReg', 'AllStruc', 'latdec', 'londec'];
-    var headers = ['Licensee', 'Call sign', 'City', 'County', 'Structure type', 'License status', 'Tower height (ft)', 'Overall height (ft)', 'Latitude', 'Longitude'];
+    var cols = ['Licensee', 'Callsign', 'LocCity', 'LocCounty', 'StrucType', 'LicStatus', 'TowReg', 'SupStruc', 'AllStruc', 'latdec', 'londec'];
+    var headers = ['Licensee', 'Call sign', 'City', 'County', 'Structure type', 'License status', 'FCC ASR #', 'Support height (m)', 'Overall height (m)', 'Latitude', 'Longitude'];
     var rows = [headers.map(csvField).join(',')];
     selectedFeatures.forEach(function (f) {
       var p = f.props;
