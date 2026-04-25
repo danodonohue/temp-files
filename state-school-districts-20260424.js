@@ -115,7 +115,7 @@
     map.fitBounds(bounds, { padding: [10, 10] });
   }
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://openstreetmap.org">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19
@@ -167,10 +167,10 @@
   function districtStyle(feature) {
     var cnt = state.schoolCountByLEA[feature.properties.GEOID] || 0;
     return {
-      color: '#ffffff',
-      weight: 0.6,
+      color: '#1f2937',
+      weight: 1,
       fillColor: colorFor(cnt),
-      fillOpacity: 0.78
+      fillOpacity: 0.42
     };
   }
 
