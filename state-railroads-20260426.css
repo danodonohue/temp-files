@@ -1,0 +1,265 @@
+/* All selectors scoped to the container — never bleed into theme */
+#state-railroad-container {
+  position: relative;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+#state-railroad-container * { box-sizing: border-box; }
+
+/* ---------- Stats strip ---------- */
+#state-railroad-container .srm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+#state-railroad-container .srm-stat {
+  background: #ffffff;
+  padding: 12px 14px;
+  text-align: center;
+}
+#state-railroad-container .srm-stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+#state-railroad-container .srm-stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-top: 4px;
+}
+@media (max-width: 600px) {
+  #state-railroad-container .srm-stats { grid-template-columns: repeat(2, 1fr); }
+  #state-railroad-container .srm-stat-value { font-size: 17px; }
+}
+
+/* ---------- Toolbar ---------- */
+#state-railroad-container .srm-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
+}
+#state-railroad-container .srm-search {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+}
+#state-railroad-container .srm-search:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+#state-railroad-container .srm-btn {
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #1f2937;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#state-railroad-container .srm-btn:hover { background: #f3f4f6; border-color: #9ca3af; }
+#state-railroad-container .srm-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+#state-railroad-container .srm-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+#state-railroad-container .srm-btn-ghost {
+  background: transparent;
+  color: #2563eb;
+  border-color: transparent;
+  text-decoration: underline;
+  padding: 6px 8px;
+}
+#state-railroad-container .srm-search-msg {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+/* ---------- Map ---------- */
+#state-railroad-container .srm-map-wrap { position: relative; }
+#state-railroad-container .srm-map {
+  height: 580px;
+  width: 100%;
+  background: #e0e7ef;
+}
+@media (max-width: 700px) {
+  #state-railroad-container .srm-map { height: 460px; }
+}
+#state-railroad-container .srm-loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 500;
+  font-size: 14px;
+  color: #374151;
+  pointer-events: none;
+}
+#state-railroad-container .srm-loading.is-hidden { display: none; }
+#state-railroad-container .srm-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid #d1d5db;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: srm-spin 0.9s linear infinite;
+}
+#state-railroad-container .srm-progress-bar {
+  width: 240px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#state-railroad-container .srm-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #2563eb;
+  transition: width 0.2s linear;
+}
+@keyframes srm-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Legend ---------- */
+#state-railroad-container .srm-legend {
+  padding: 12px 14px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  #state-railroad-container .srm-legend { grid-template-columns: 1fr; }
+}
+#state-railroad-container .srm-legend-section h4 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  font-weight: 600;
+}
+#state-railroad-container .srm-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.3;
+}
+#state-railroad-container .srm-legend-item input { margin: 0; cursor: pointer; }
+#state-railroad-container .srm-swatch {
+  display: inline-block;
+  width: 26px;
+  height: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+#state-railroad-container .srm-swatch.dashed {
+  background: transparent;
+  border-top: 3px dashed #9333ea;
+  height: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+#state-railroad-container .srm-legend-count {
+  margin-left: auto;
+  font-size: 11px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Popup ---------- */
+#state-railroad-container .srm-popup {
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.45;
+  min-width: 200px;
+}
+#state-railroad-container .srm-popup-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+#state-railroad-container .srm-popup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+  border-top: 1px dotted #e5e7eb;
+}
+#state-railroad-container .srm-popup-row:first-of-type { border-top: none; }
+#state-railroad-container .srm-popup-key { color: #6b7280; }
+#state-railroad-container .srm-popup-val { color: #1f2937; font-weight: 500; text-align: right; }
+#state-railroad-container .srm-popup-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 4px;
+  margin-top: 6px;
+}
+#state-railroad-container .srm-tag-pass { background: #dbeafe; color: #1e40af; }
+#state-railroad-container .srm-tag-stra { background: #ede9fe; color: #6d28d9; }
+
+/* ---------- Attribution footer ---------- */
+#state-railroad-container .srm-attrib {
+  font-size: 11px;
+  color: #6b7280;
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+#state-railroad-container .srm-attrib a { color: #4b5563; }
+
+/* ---------- Share link toast ---------- */
+#state-railroad-container .srm-toast {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  z-index: 600;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+#state-railroad-container .srm-toast.is-visible { opacity: 1; }
