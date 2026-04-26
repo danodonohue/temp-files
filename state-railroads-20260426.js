@@ -162,6 +162,12 @@
     map.setView([39.83, -98.58], 4);
   }
 
+  // Force size recalc once CSS has fully applied (handles cases where the map
+  // div had 0 height when Leaflet initialised) + on viewport resize.
+  setTimeout(function () { map.invalidateSize(); }, 100);
+  setTimeout(function () { map.invalidateSize(); }, 600);
+  window.addEventListener('resize', function () { map.invalidateSize(); });
+
   // ----- Filter state -----
   var filters = {};
   LEGEND_GROUPS.forEach(function (g) { filters[g.key] = true; });
