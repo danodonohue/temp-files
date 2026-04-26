@@ -15,23 +15,26 @@
 /* ---------- Stats strip ---------- */
 #state-railroad-container .srm-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
 }
 #state-railroad-container .srm-stat {
   background: #ffffff;
-  padding: 12px 14px;
+  padding: 12px 8px;
   text-align: center;
+  min-width: 0;
+  overflow: hidden;
 }
 #state-railroad-container .srm-stat-value {
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
+  word-break: break-word;
 }
 #state-railroad-container .srm-stat-label {
   display: block;
@@ -42,8 +45,8 @@
   margin-top: 4px;
 }
 @media (max-width: 600px) {
-  #state-railroad-container .srm-stats { grid-template-columns: repeat(2, 1fr); }
-  #state-railroad-container .srm-stat-value { font-size: 17px; }
+  #state-railroad-container .srm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #state-railroad-container .srm-stat-value { font-size: 16px; }
 }
 
 /* ---------- Toolbar ---------- */
@@ -57,8 +60,9 @@
   align-items: center;
 }
 #state-railroad-container .srm-search {
-  flex: 1 1 240px;
+  flex: 1 1 180px;
   min-width: 0;
+  width: 100%;
   padding: 8px 10px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
@@ -134,7 +138,8 @@
   animation: srm-spin 0.9s linear infinite;
 }
 #state-railroad-container .srm-progress-bar {
-  width: 240px;
+  width: min(240px, 80%);
+  max-width: 240px;
   height: 6px;
   background: #e5e7eb;
   border-radius: 4px;
@@ -154,12 +159,13 @@
   background: #f9fafb;
   border-top: 1px solid #e5e7eb;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 14px 24px;
   font-size: 13px;
 }
+#state-railroad-container .srm-legend-section { min-width: 0; }
 @media (max-width: 700px) {
-  #state-railroad-container .srm-legend { grid-template-columns: 1fr; }
+  #state-railroad-container .srm-legend { grid-template-columns: minmax(0, 1fr); }
 }
 #state-railroad-container .srm-legend-section h4 {
   margin: 0 0 8px;
