@@ -1,0 +1,281 @@
+/* state-natural-gas-pipelines.css
+ * Scoped to #state-ng-container. All rules live under that ID.
+ */
+
+#state-ng-container {
+  --ngp-blue: #1976D2;
+  --ngp-green: #388E3C;
+  --ngp-bg: #f7f8fa;
+  --ngp-border: #d8dde3;
+  --ngp-text: #1f2937;
+  --ngp-muted: #6b7280;
+  --ngp-accent: #0f766e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ngp-text);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 0 1.5rem 0;
+}
+
+#state-ng-container *,
+#state-ng-container *::before,
+#state-ng-container *::after {
+  box-sizing: border-box;
+}
+
+#state-ng-container .ngp-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--ngp-border);
+  border: 1px solid var(--ngp-border);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+#state-ng-container .ngp-stat {
+  background: var(--ngp-bg);
+  padding: 14px 12px;
+  text-align: center;
+  min-width: 0;
+}
+
+#state-ng-container .ngp-stat-val {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ngp-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#state-ng-container .ngp-stat-val.ngp-stat-small {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+#state-ng-container .ngp-stat-lab {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ngp-muted);
+  margin-top: 4px;
+}
+
+#state-ng-container .ngp-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background: var(--ngp-bg);
+  border-left: 1px solid var(--ngp-border);
+  border-right: 1px solid var(--ngp-border);
+  align-items: center;
+}
+
+#state-ng-container .ngp-search-wrap {
+  position: relative;
+  display: flex;
+  flex: 1 1 240px;
+  min-width: 200px;
+  gap: 6px;
+}
+
+#state-ng-container .ngp-search {
+  flex: 1 1 auto;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid var(--ngp-border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ngp-text);
+  min-width: 0;
+}
+
+#state-ng-container .ngp-search-btn,
+#state-ng-container .ngp-locate,
+#state-ng-container .ngp-share {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--ngp-border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ngp-text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#state-ng-container .ngp-search-btn:hover,
+#state-ng-container .ngp-locate:hover,
+#state-ng-container .ngp-share:hover {
+  background: #eef2f7;
+}
+
+#state-ng-container .ngp-operator-filter,
+#state-ng-container .ngp-type-filter {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  border: 1px solid var(--ngp-border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ngp-text);
+  max-width: 240px;
+}
+
+#state-ng-container .ngp-operator-filter {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+#state-ng-container .ngp-search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--ngp-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1100;
+}
+
+#state-ng-container .ngp-search-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #eef0f3;
+  cursor: pointer;
+  color: var(--ngp-text);
+}
+
+#state-ng-container .ngp-search-row:hover {
+  background: #f3f6f9;
+}
+
+#state-ng-container .ngp-search-msg {
+  padding: 10px;
+  font-size: 0.85rem;
+  color: var(--ngp-muted);
+}
+
+#state-ng-container .ngp-mapwrap {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  border: 1px solid var(--ngp-border);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+#state-ng-container .ngp-map {
+  position: absolute;
+  inset: 0;
+}
+
+#state-ng-container .ngp-legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--ngp-border);
+  font-size: 0.78rem;
+  z-index: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#state-ng-container .ngp-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+#state-ng-container .ngp-legend-row:last-child {
+  margin-bottom: 0;
+}
+
+#state-ng-container .ngp-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 1px;
+}
+
+#state-ng-container .ngp-swatch-state {
+  background: transparent;
+  border: 1.5px dashed #222;
+  height: 8px;
+}
+
+#state-ng-container .ngp-loading,
+#state-ng-container .ngp-error {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--ngp-border);
+  font-size: 0.85rem;
+  z-index: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#state-ng-container .ngp-error {
+  color: #b00020;
+  border-color: #f5c2c7;
+}
+
+#state-ng-container .ngp-popup {
+  font-size: 0.9rem;
+  min-width: 200px;
+}
+
+#state-ng-container .ngp-popup-op {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ngp-text);
+}
+
+#state-ng-container .ngp-popup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 0;
+  font-size: 0.85rem;
+}
+
+#state-ng-container .ngp-popup-row span {
+  color: var(--ngp-muted);
+}
+
+@media (max-width: 720px) {
+  #state-ng-container .ngp-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #state-ng-container .ngp-stat-val { font-size: 1.4rem; }
+  #state-ng-container .ngp-mapwrap { height: 460px; }
+  #state-ng-container .ngp-controls { padding: 8px; }
+}
+
+@media (max-width: 480px) {
+  #state-ng-container .ngp-mapwrap { height: 400px; }
+  #state-ng-container .ngp-search-wrap { flex: 1 1 100%; }
+  #state-ng-container .ngp-operator-filter,
+  #state-ng-container .ngp-type-filter { flex: 1 1 100%; max-width: none; }
+}
