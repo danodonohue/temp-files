@@ -1,0 +1,205 @@
+#us-wind-turbines-map-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.wt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0 8px;
+}
+
+#us-wind-turbines-map-container .wt-controls select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+#us-wind-turbines-map-container .wt-controls select:focus {
+  outline: 2px solid #27ae60;
+  border-color: #27ae60;
+}
+
+#wt-analyze-btn {
+  padding: 6px 14px;
+  border: 1px solid #27ae60;
+  border-radius: 4px;
+  background: #fff;
+  color: #27ae60;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+#wt-analyze-btn:hover {
+  background: #eafaf1;
+}
+
+#wt-analyze-btn.active {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+.wt-stats {
+  font-size: 13px;
+  color: #444;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+#us-wind-turbines-map-map {
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+}
+
+/* Legend */
+.wt-legend {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 4px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.wt-legend strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.wt-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wt-legend i {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Analysis panel */
+.wt-analysis-panel {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 5px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  font-size: 13px;
+  min-width: 230px;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+.wt-ap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wt-ap-header strong {
+  font-size: 13px;
+  color: #333;
+}
+
+.wt-ap-close {
+  border: none;
+  background: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 0 0 0 8px;
+}
+
+.wt-ap-close:hover { color: #333; }
+
+.wt-ap-count {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e74c3c;
+  margin-bottom: 8px;
+}
+
+.wt-ap-num {
+  font-size: 22px;
+}
+
+.wt-ap-radius {
+  margin-bottom: 10px;
+}
+
+.wt-ap-radius label {
+  font-size: 12px;
+  color: #555;
+  display: block;
+}
+
+.wt-ap-radius input[type="range"] {
+  width: 100%;
+  margin-top: 4px;
+  accent-color: #e74c3c;
+}
+
+.wt-ap-nearest {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  font-size: 12px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.wt-ap-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  margin-bottom: 3px;
+}
+
+.wt-ap-dist {
+  display: inline-block;
+  margin-top: 3px;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+.wt-ap-empty {
+  color: #888;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  #us-wind-turbines-map-map {
+    height: 380px;
+  }
+  .wt-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #us-wind-turbines-map-container .wt-controls select,
+  #wt-analyze-btn {
+    width: 100%;
+    min-width: 0;
+  }
+  .wt-stats {
+    margin-left: 0;
+  }
+}
