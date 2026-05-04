@@ -1,16 +1,12 @@
 (function () {
   'use strict';
-
   var SLUG = 'us-radon-zones-map';
   var SERVICE_URL = 'https://gispub.epa.gov/arcgis/rest/services/ORD/ROE_Radon/MapServer/0';
-
   var ZONE_CONFIG = {
     1: { fill: '#DC2626', border: '#991b1b', label: 'Zone 1 — High (>4 pCi/L)',     badge: 'zone-1', desc: 'Predicted average indoor radon level greater than 4 pCi/L. EPA recommends taking action to reduce radon.' },
     2: { fill: '#F59E0B', border: '#b45309', label: 'Zone 2 — Moderate (2–4 pCi/L)', badge: 'zone-2', desc: 'Predicted average indoor radon level between 2 and 4 pCi/L. Testing is strongly recommended.' },
     3: { fill: '#16A34A', border: '#166534', label: 'Zone 3 — Low (<2 pCi/L)',        badge: 'zone-3', desc: 'Predicted average indoor radon level less than 2 pCi/L. Testing is still recommended as local conditions vary.' }
   };
-
-  // State abbreviation lookup keyed by full state name (matches EPA StateName field)
   var STATE_ABBR = {
     'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA',
     'Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA',
@@ -23,11 +19,6 @@
     'South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT',
     'Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY'
   };
-
-  // AARST Report Card data — scraped May 2026 — keyed by 2-letter state abbreviation
-  // Source: https://aarst.org/report-card/
-  // Fields: cases = radon-induced lung cancer cases/yr, med = medical costs, econ = economic costs,
-  //         tests = cumulative pre-mitigation tests, pol = policy array [cert, standards, buyer, newHome, schoolTest, newSchool]
   var STATE_DATA = {
     AL:{cases:362,  med:'$73M',   econ:'$76M',   tests:12569,   pol:[0,0,0,0,0,0]},
     AK:{cases:52,   med:'$10M',   econ:'$11M',   tests:830,     pol:[0,0,1,0,0,0]},
@@ -80,12 +71,9 @@
     WI:{cases:962,  med:'$193M',  econ:'$203M',  tests:127605,  pol:[0,0,1,0,0,0]},
     WY:{cases:59,   med:'$12M',   econ:'$12M',   tests:7638,    pol:[0,0,0,0,0,0]}
   };
-
   var POL_LABELS = ['State certification', 'Radon standards', 'Homebuyer disclosure', 'New home system req.', 'School testing req.', 'New school system req.'];
-
   var PUBLIC_SCHOOLS_URL  = 'https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Public_School_Locations_Current/FeatureServer/0';
   var PRIVATE_SCHOOLS_URL = 'https://services1.arcgis.com/Ua5sjt3LWTPigjyD/arcgis/rest/services/Private_School_Locations_Current/FeatureServer/0';
-
   var appState = {
     map: null,
     countyLayer: null,
@@ -96,37 +84,30 @@
     schoolsVisible: { public: false, private: false },
     schoolMoveHandlers: { public: null, private: null }
   };
-
   function init() {
     var mapEl = document.getElementById(SLUG + '-map');
     if (!mapEl) return;
     appState.stateFilter = (mapEl.getAttribute('data-state') || '').trim() || null;
-
     var saved = loadHashState();
     appState.map = L.map(SLUG + '-map', {
       center: saved ? [parseFloat(saved.lat), parseFloat(saved.lng)] : [39.5, -98.35],
       zoom:   saved ? parseInt(saved.z, 10) : 4
     });
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Radon zones: <a href="https://www.epa.gov/radon/epa-map-radon-zones">US EPA</a> | State data: <a href="https://aarst.org/report-card/">AARST</a>',
       maxZoom: 19
     }).addTo(appState.map);
-
     appState.map.on('moveend', updateHashState);
-
     buildLegend();
     setupSearch();
     setupGeolocation();
     loadCounties();
     setupSchoolToggles();
   }
-
   function buildWhere() {
     if (!appState.stateFilter) return '1=1';
     return "StateName='" + appState.stateFilter.replace(/'/g, "''") + "'";
   }
-
   function loadCounties() {
     showLoading(true);
     var where  = encodeURIComponent(buildWhere());
@@ -138,7 +119,6 @@
       '&maxAllowableOffset=0.01' +
       '&returnGeometry=true' +
       '&resultRecordCount=4000';
-
     fetch(url)
       .then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -160,14 +140,11 @@
         console.error('[radon-map]', err);
       });
   }
-
   function renderCounties() {
     if (appState.countyLayer) { appState.map.removeLayer(appState.countyLayer); appState.countyLayer = null; }
-
     var visible = appState.allFeatures.filter(function (f) {
       return !!appState.visibleZones[parseInt(f.properties.RadonZone, 10)];
     });
-
     appState.countyLayer = L.geoJSON({ type: 'FeatureCollection', features: visible }, {
       style: function (feature) {
         var z   = parseInt(feature.properties.RadonZone, 10);
@@ -182,13 +159,11 @@
         var stateName   = escHtml(p.StateName || '');
         var abbr        = STATE_ABBR[p.StateName] || '';
         var sd          = abbr ? STATE_DATA[abbr] : null;
-
         var html =
           '<div class="' + SLUG + '-popup">' +
             '<div class="' + SLUG + '-popup-title">' + countyLabel + ', ' + stateName + '</div>' +
             '<div class="' + SLUG + '-popup-zone ' + cfg.badge + '">' + cfg.label + '</div>' +
             '<div class="' + SLUG + '-popup-desc">' + cfg.desc + '</div>';
-
         if (sd) {
           html +=
             '<div class="' + SLUG + '-popup-divider"></div>' +
@@ -201,16 +176,13 @@
             '<div class="' + SLUG + '-popup-policy-title">State Policy</div>' +
             '<div class="' + SLUG + '-popup-policy">' + buildPolicyHtml(sd.pol) + '</div>';
         }
-
         html += '</div>';
         layer.bindPopup(html, { maxWidth: 310, maxHeight: 420 });
-
         layer.on('mouseover', function () { this.setStyle({ weight: 2, fillOpacity: 0.85 }); this.bringToFront(); });
         layer.on('mouseout',  function () { this.setStyle({ weight: 0.6, fillOpacity: 0.65 }); });
       }
     }).addTo(appState.map);
   }
-
   function buildPolicyHtml(pol) {
     var html = '';
     for (var i = 0; i < POL_LABELS.length; i++) {
@@ -220,14 +192,12 @@
     }
     return html;
   }
-
   function fmtTests(n) {
     if (!n) return 'No data';
     if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
     if (n >= 1000)    return Math.round(n / 1000) + 'K';
     return n.toString();
   }
-
   function updateStats() {
     var counts = { 1: 0, 2: 0, 3: 0 };
     appState.allFeatures.forEach(function (f) {
@@ -239,13 +209,11 @@
     setCard('z2', counts[2].toLocaleString(), 'Zone 2 — Moderate');
     setCard('z3', counts[3].toLocaleString(), 'Zone 3 — Low');
   }
-
   function setCard(id, val, label) {
     var el = document.getElementById(SLUG + '-stat-' + id);
     if (!el) return;
     el.innerHTML = '<strong>' + val + '</strong><span>' + label + '</span>';
   }
-
   function buildLegend() {
     var container = document.getElementById(SLUG + '-legend');
     if (!container) return;
@@ -273,7 +241,6 @@
         '<svg width="14" height="14" viewBox="0 0 14 14" style="flex-shrink:0"><rect x="3.5" y="3.5" width="7" height="7" fill="#fff" stroke="#9333ea" stroke-width="2.5" transform="rotate(45 7 7)"/></svg>' +
         '<span>Private schools</span>' +
       '</label>';
-
     container.innerHTML = html;
     container.querySelectorAll('input[data-zone]').forEach(function (cb) {
       cb.addEventListener('change', function () {
@@ -283,7 +250,6 @@
       });
     });
   }
-
   function setupSearch() {
     var btn   = document.getElementById(SLUG + '-search-btn');
     var input = document.getElementById(SLUG + '-address');
@@ -302,7 +268,6 @@
     btn.addEventListener('click', doSearch);
     input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSearch(); });
   }
-
   function setupGeolocation() {
     var btn = document.getElementById(SLUG + '-locate-btn');
     if (!btn) return;
@@ -314,14 +279,12 @@
       );
     });
   }
-
   function setupSchoolToggles() {
     var pubCb  = document.getElementById(SLUG + '-toggle-public');
     var privCb = document.getElementById(SLUG + '-toggle-private');
     if (pubCb)  pubCb.addEventListener('change',  function () { toggleSchools('public',  this.checked); });
     if (privCb) privCb.addEventListener('change', function () { toggleSchools('private', this.checked); });
   }
-
   function toggleSchools(type, show) {
     appState.schoolsVisible[type] = show;
     if (!show) {
@@ -340,9 +303,7 @@
     });
     cluster.addTo(appState.map);
     appState.schoolLayers[type] = cluster;
-
     var abbr = appState.stateFilter ? (STATE_ABBR[appState.stateFilter] || appState.stateFilter) : null;
-
     if (abbr) {
       fetchSchoolsWhere(type, "STATE='" + abbr + "'", 12000, cluster);
     } else {
@@ -355,7 +316,6 @@
       appState.map.on('moveend', appState.schoolMoveHandlers[type]);
     }
   }
-
   function fetchSchoolsByViewport(type, cluster) {
     var b   = appState.map.getBounds();
     var env = JSON.stringify({
@@ -380,7 +340,6 @@
       .then(function (data) { addSchoolFeatures(data.features || [], type, cluster); })
       .catch(function (e) { console.error('[radon-map] school viewport load:', e); });
   }
-
   function fetchSchoolsWhere(type, where, limit, cluster) {
     var params = [
       'where=' + encodeURIComponent(where),
@@ -395,7 +354,6 @@
       .then(function (data) { addSchoolFeatures(data.features || [], type, cluster); })
       .catch(function (e) { console.error('[radon-map] school state load:', e); });
   }
-
   function makeSchoolIcon(isPublic) {
     var stroke = isPublic ? '#1d4ed8' : '#9333ea';
     var shape  = isPublic
@@ -409,12 +367,10 @@
       popupAnchor: [0, -8]
     });
   }
-
   function addSchoolFeatures(features, type, cluster) {
     var isPublic = (type === 'public');
     var icon     = makeSchoolIcon(isPublic);
     var label    = isPublic ? 'Public school' : 'Private school';
-
     features.forEach(function (f) {
       if (!f.geometry || !f.geometry.coordinates) return;
       var lon = f.geometry.coordinates[0];
@@ -436,19 +392,16 @@
       cluster.addLayer(m);
     });
   }
-
   function showLoading(show) {
     var el = document.getElementById(SLUG + '-loading');
     if (!el) return;
     el.style.display = show ? 'flex' : 'none';
     if (show) el.textContent = 'Loading radon zone data...';
   }
-
   function updateHashState() {
     var c = appState.map.getCenter();
     history.replaceState(null, '', '#lat=' + c.lat.toFixed(4) + '&lng=' + c.lng.toFixed(4) + '&z=' + appState.map.getZoom());
   }
-
   function loadHashState() {
     var h = window.location.hash.slice(1);
     if (!h) return null;
@@ -459,11 +412,9 @@
     });
     return (out.lat && out.lng && out.z) ? out : null;
   }
-
   function escHtml(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
