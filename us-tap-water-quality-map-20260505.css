@@ -1,0 +1,175 @@
+/* US Tap Water Quality Map — mapscaping.com */
+
+#us-tap-water-quality-map-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 100%;
+  margin: 0 0 24px;
+}
+
+/* Stats strip */
+#us-tap-water-quality-map-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.us-tap-water-quality-map-stat {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.us-tap-water-quality-map-stat strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.us-tap-water-quality-map-stat small {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Filter buttons */
+#us-tap-water-quality-map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.us-tap-water-quality-map-filter-btn {
+  padding: 6px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #374151;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.us-tap-water-quality-map-filter-btn:hover {
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+}
+
+.us-tap-water-quality-map-filter-btn.active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+
+/* Map */
+#us-tap-water-quality-map-map {
+  width: 100%;
+  height: 580px;
+  overflow: hidden;
+}
+
+/* Search controls */
+#us-tap-water-quality-map-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#us-tap-water-quality-map-address {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+#us-tap-water-quality-map-address:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#us-tap-water-quality-map-search-btn,
+#us-tap-water-quality-map-locate-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+#us-tap-water-quality-map-search-btn {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+#us-tap-water-quality-map-search-btn:hover { background: #1e40af; }
+
+#us-tap-water-quality-map-locate-btn {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+#us-tap-water-quality-map-locate-btn:hover { background: #e5e7eb; }
+
+/* Legend */
+#us-tap-water-quality-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #374151;
+  align-items: center;
+}
+
+.us-tap-water-quality-map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.us-tap-water-quality-map-legend-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1.5px solid transparent;
+  flex-shrink: 0;
+}
+
+/* Data note */
+#us-tap-water-quality-map-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #us-tap-water-quality-map-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  #us-tap-water-quality-map-map {
+    height: 400px;
+  }
+  .us-tap-water-quality-map-stat strong {
+    font-size: 17px;
+  }
+}
