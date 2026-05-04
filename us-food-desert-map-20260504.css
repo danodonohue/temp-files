@@ -1,0 +1,105 @@
+#us-food-desert-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#us-food-desert-map-controls {
+  display: flex;
+  align-items: center;
+  padding: 6px 0 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#us-food-desert-map-wrap {
+  position: relative;
+}
+
+#us-food-desert-map-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+  background: #e8e8e8;
+}
+
+#us-food-desert-map-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.93);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  color: #444;
+  z-index: 1000;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+#us-food-desert-map-loading.fdm-hidden {
+  display: none;
+}
+
+#us-food-desert-map-legend {
+  position: absolute;
+  bottom: 28px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 7px 11px;
+  font-size: 0.78rem;
+  color: #333;
+  z-index: 900;
+  pointer-events: none;
+  line-height: 1.5;
+}
+
+#us-food-desert-map-legend .fdm-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 2px 0;
+}
+
+#us-food-desert-map-legend .fdm-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  flex-shrink: 0;
+}
+
+#us-food-desert-map-share {
+  padding: 5px 12px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+#us-food-desert-map-share:hover {
+  background: #a93226;
+}
+
+@media (max-width: 600px) {
+  #us-food-desert-map-map {
+    height: 380px;
+  }
+
+  #us-food-desert-map-legend {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+    bottom: 22px;
+    right: 6px;
+  }
+}
