@@ -1,0 +1,340 @@
+#us-wastewater-plants-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2933;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#us-wastewater-plants-container *,
+#us-wastewater-plants-container *::before,
+#us-wastewater-plants-container *::after {
+  box-sizing: border-box;
+}
+
+#us-wastewater-plants-container .uwp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f3f5f8;
+  border: 1px solid #d8dee5;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+#us-wastewater-plants-container .uwp-toolbar input,
+#us-wastewater-plants-container .uwp-toolbar select {
+  padding: 7px 10px;
+  border: 1px solid #c2cad4;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fff;
+  color: #1f2933;
+  outline: none;
+}
+#us-wastewater-plants-container .uwp-toolbar input:focus,
+#us-wastewater-plants-container .uwp-toolbar select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.18);
+}
+#us-wastewater-plants-container .uwp-search {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+#us-wastewater-plants-container .uwp-state {
+  flex: 0 0 auto;
+}
+
+#us-wastewater-plants-container .uwp-radio-group {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid #c2cad4;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  font-size: 12.5px;
+}
+#us-wastewater-plants-container .uwp-radio-group label {
+  padding: 7px 10px;
+  cursor: pointer;
+  color: #475569;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+#us-wastewater-plants-container .uwp-radio-group label:last-child {
+  border-right: none;
+}
+#us-wastewater-plants-container .uwp-radio-group input { display: none; }
+#us-wastewater-plants-container .uwp-radio-group input:checked + label {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+#us-wastewater-plants-container .uwp-group-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-right: 4px;
+}
+
+#us-wastewater-plants-container .uwp-reset {
+  margin-left: auto;
+  padding: 7px 12px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#us-wastewater-plants-container .uwp-reset:hover { background: #1d4ed8; }
+
+#us-wastewater-plants-container .uwp-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-left: 1px solid #d8dee5;
+  border-right: 1px solid #d8dee5;
+  font-size: 12.5px;
+  color: #475569;
+}
+#us-wastewater-plants-container .uwp-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+#us-wastewater-plants-container .uwp-stat strong {
+  color: #1f2933;
+}
+
+#us-wastewater-plants-map {
+  width: 100%;
+  height: 600px;
+  min-height: 320px;
+  border: 1px solid #d8dee5;
+  border-radius: 0 0 6px 6px;
+  background: #e7eaef;
+  position: relative;
+}
+
+#us-wastewater-plants-container .leaflet-popup-content-wrapper {
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.18);
+}
+#us-wastewater-plants-container .leaflet-popup-content {
+  margin: 12px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #1f2933;
+  min-width: 240px;
+}
+#us-wastewater-plants-container .uwp-pop-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+#us-wastewater-plants-container .uwp-pop-meta {
+  color: #475569;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+}
+#us-wastewater-plants-container .uwp-pop-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin: 0 4px 6px 0;
+  letter-spacing: 0.2px;
+}
+#us-wastewater-plants-container .uwp-tag-sourced { background: #dcfce7; color: #166534; }
+#us-wastewater-plants-container .uwp-tag-modelled { background: #fef3c7; color: #92400e; }
+#us-wastewater-plants-container .uwp-tag-treatment { background: #dbeafe; color: #1e40af; }
+#us-wastewater-plants-container .uwp-tag-collection { background: #f1f5f9; color: #475569; }
+
+#us-wastewater-plants-container .uwp-pop-section {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #eef0f4;
+}
+#us-wastewater-plants-container .uwp-pop-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #94a3b8;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+#us-wastewater-plants-container .uwp-pop-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 0;
+}
+#us-wastewater-plants-container .uwp-pop-label {
+  color: #64748b;
+  font-size: 12px;
+}
+#us-wastewater-plants-container .uwp-pop-value {
+  color: #0f172a;
+  text-align: right;
+  font-weight: 600;
+  font-size: 12.5px;
+}
+#us-wastewater-plants-container .uwp-pop-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  background: #1e40af;
+  color: #fff !important;
+  text-decoration: none !important;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+#us-wastewater-plants-container .uwp-pop-link:hover { background: #1e3a8a; }
+
+#us-wastewater-plants-container .uwp-pop-help {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+}
+
+#us-wastewater-plants-container .uwp-cluster {
+  background: rgba(37,99,235,0.85);
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.85);
+  box-shadow: 0 2px 6px rgba(15,23,42,0.25);
+}
+#us-wastewater-plants-container .uwp-cluster-sm { width: 30px; height: 30px; }
+#us-wastewater-plants-container .uwp-cluster-md { width: 38px; height: 38px; font-size: 13px; }
+#us-wastewater-plants-container .uwp-cluster-lg { width: 46px; height: 46px; font-size: 14px; }
+#us-wastewater-plants-container .uwp-cluster-xl { width: 56px; height: 56px; font-size: 14px; }
+
+#us-wastewater-plants-container .uwp-loading {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  background: rgba(15,23,42,0.85);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+#us-wastewater-plants-container .uwp-legend {
+  background: #ffffffee;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.55;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.18);
+  color: #1f2933;
+  max-width: 230px;
+  overflow: hidden;
+}
+#us-wastewater-plants-container .uwp-legend-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: inherit;
+}
+#us-wastewater-plants-container .uwp-legend-toggle:hover { background: #f1f5f9; }
+#us-wastewater-plants-container .uwp-legend-toggle .uwp-chev {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #475569;
+  border-bottom: 2px solid #475569;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+  transition: transform 0.15s ease;
+}
+#us-wastewater-plants-container .uwp-legend.uwp-open .uwp-legend-toggle .uwp-chev {
+  transform: rotate(-135deg);
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+#us-wastewater-plants-container .uwp-legend-body {
+  padding: 8px 12px 10px 12px;
+  display: none;
+  border-top: 1px solid #e2e8f0;
+}
+#us-wastewater-plants-container .uwp-legend.uwp-open .uwp-legend-body {
+  display: block;
+}
+#us-wastewater-plants-container .uwp-legend strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 12.5px;
+}
+#us-wastewater-plants-container .uwp-legend-section {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+#us-wastewater-plants-container .uwp-legend-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+#us-wastewater-plants-container .uwp-legend .uwp-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  border-radius: 50%;
+  border: 1px solid rgba(15,23,42,0.25);
+}
+#us-wastewater-plants-container .uwp-legend .uwp-swatch-poly {
+  border-radius: 2px;
+  width: 14px;
+  height: 10px;
+}
+#us-wastewater-plants-container .uwp-legend .uwp-size-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+#us-wastewater-plants-container .uwp-legend .uwp-size-dot {
+  background: transparent;
+  border: 1.5px solid #475569;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  #us-wastewater-plants-map { height: 460px; }
+  #us-wastewater-plants-container .uwp-toolbar { padding: 8px; gap: 6px; }
+  #us-wastewater-plants-container .uwp-stats { font-size: 12px; padding: 6px 8px; }
+  #us-wastewater-plants-container .uwp-reset { margin-left: 0; }
+  #us-wastewater-plants-container .uwp-radio-group { font-size: 12px; }
+  #us-wastewater-plants-container .uwp-radio-group label { padding: 6px 8px; }
+  #us-wastewater-plants-container .uwp-legend { font-size: 11px; max-width: 200px; }
+}
