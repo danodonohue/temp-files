@@ -1,0 +1,185 @@
+#us-landfill-gas-energy-map-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+#us-landfill-gas-energy-map-map {
+  width: 100%;
+  height: 560px;
+  min-height: 320px;
+  background: #e8f4f8;
+  border: none;
+  overflow: hidden;
+}
+
+.us-landfill-gas-energy-map-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #1a237e;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.us-landfill-gas-energy-map-stats span {
+  white-space: nowrap;
+}
+
+.us-landfill-gas-energy-map-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: #f0f4ff;
+  border-bottom: 1px solid #c5cae9;
+  font-size: 0.85rem;
+}
+
+.us-landfill-gas-energy-map-filter-bar label {
+  font-weight: 600;
+  color: #1a237e;
+  white-space: nowrap;
+}
+
+.us-landfill-gas-energy-map-filter-bar select {
+  padding: 4px 8px;
+  border: 1px solid #9fa8da;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.us-landfill-gas-energy-map-search-bar {
+  display: flex;
+  gap: 0;
+  padding: 6px 8px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.us-landfill-gas-energy-map-search-bar input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #bbb;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.us-landfill-gas-energy-map-search-bar button {
+  padding: 6px 12px;
+  border: 1px solid #bbb;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.us-landfill-gas-energy-map-legend {
+  position: absolute;
+  bottom: 28px;
+  right: 8px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  pointer-events: none;
+  min-width: 170px;
+}
+
+.us-landfill-gas-energy-map-legend strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.us-landfill-gas-energy-map-leg-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+.us-landfill-gas-energy-map-leg-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px #aaa;
+  flex-shrink: 0;
+}
+
+.us-landfill-gas-energy-map-leg-cnt {
+  color: #888;
+  font-size: 0.74rem;
+  margin-left: auto;
+}
+
+.us-landfill-gas-energy-map-popup strong {
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.us-landfill-gas-energy-map-type-badge {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin: 3px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.us-landfill-gas-energy-map-pop-tbl {
+  width: 100%;
+  font-size: 0.78rem;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+
+.us-landfill-gas-energy-map-pop-tbl td {
+  padding: 2px 4px;
+  vertical-align: top;
+}
+
+.us-landfill-gas-energy-map-pop-tbl td:first-child {
+  color: #666;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+@media (max-width: 600px) {
+  #us-landfill-gas-energy-map-map {
+    height: 390px;
+  }
+
+  .us-landfill-gas-energy-map-stats {
+    font-size: 0.75rem;
+    gap: 8px;
+    padding: 6px 8px;
+  }
+
+  .us-landfill-gas-energy-map-legend {
+    font-size: 0.72rem;
+    padding: 7px 10px;
+  }
+}
