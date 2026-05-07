@@ -1,0 +1,306 @@
+#us-oil-gas-wells-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+#us-oil-gas-wells-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  background: #1a1a2e;
+  border-bottom: 2px solid #16213e;
+}
+
+.ogw-control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ogw-control-group label {
+  color: #a0aec0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#us-oil-gas-wells-search {
+  padding: 5px 10px;
+  border: 1px solid #2d3748;
+  border-radius: 4px;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  font-size: 13px;
+  width: 170px;
+}
+
+#us-oil-gas-wells-search::placeholder { color: #4a5568; }
+
+#us-oil-gas-wells-search-btn,
+#us-oil-gas-wells-geo {
+  padding: 5px 10px;
+  border: 1px solid #2d3748;
+  border-radius: 4px;
+  background: #2d3748;
+  color: #e2e8f0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+#us-oil-gas-wells-search-btn:hover,
+#us-oil-gas-wells-geo:hover { background: #4a5568; }
+
+#us-oil-gas-wells-type,
+#us-oil-gas-wells-radius {
+  padding: 5px 8px;
+  border: 1px solid #2d3748;
+  border-radius: 4px;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#us-oil-gas-wells-measure-btn {
+  padding: 5px 11px;
+  border: 1px solid #e67e22;
+  border-radius: 4px;
+  background: transparent;
+  color: #e67e22;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  font-weight: 600;
+}
+
+#us-oil-gas-wells-measure-btn:hover,
+#us-oil-gas-wells-measure-btn.ogw-measure-on {
+  background: #e67e22;
+  color: #fff;
+}
+
+.ogw-divider {
+  width: 1px;
+  height: 22px;
+  background: #2d3748;
+  flex-shrink: 0;
+}
+
+.ogw-spacer { flex: 1; min-width: 8px; }
+
+#us-oil-gas-wells-count {
+  color: #68d391;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#us-oil-gas-wells-loading-text {
+  color: #a0aec0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.ogw-map-wrap { position: relative; }
+
+#us-oil-gas-wells-map {
+  width: 100%;
+  height: 560px;
+  min-height: 300px;
+  background: #0a0a1a;
+}
+
+.ogw-crosshair #us-oil-gas-wells-map { cursor: crosshair; }
+
+#us-oil-gas-wells-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 26, 0.88);
+  color: #a0aec0;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ogw-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #4a5568;
+  border-top-color: #68d391;
+  border-radius: 50%;
+  animation: ogw-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes ogw-spin { to { transform: rotate(360deg); } }
+
+#us-oil-gas-wells-legend {
+  position: absolute;
+  bottom: 28px;
+  right: 8px;
+  background: rgba(15, 15, 26, 0.92);
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 800;
+  min-width: 150px;
+}
+
+.ogw-legend-title {
+  color: #a0aec0;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.ogw-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #e2e8f0;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.ogw-legend-item:last-child { margin-bottom: 0; }
+
+.ogw-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
+#us-oil-gas-wells-result {
+  display: none;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #1a1a2e;
+  border-top: 1px solid #2d3748;
+  font-size: 13px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+#us-oil-gas-wells-result-text { flex: 1; }
+
+#us-oil-gas-wells-result-text strong { color: #f6ad55; }
+
+.ogw-result-sub {
+  color: #a0aec0;
+  font-size: 12px;
+}
+
+#us-oil-gas-wells-measure-clear {
+  padding: 4px 10px;
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 4px;
+  color: #e2e8f0;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#us-oil-gas-wells-measure-clear:hover { background: #4a5568; }
+
+#us-oil-gas-wells-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: #0f0f1a;
+  border-top: 1px solid #1a1a2e;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ogw-data-note {
+  color: #4a5568;
+  font-size: 11px;
+}
+
+.ogw-popup {
+  font-size: 13px;
+  line-height: 1.5;
+  min-width: 200px;
+}
+
+.ogw-popup strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: #1a202c;
+}
+
+.ogw-popup .ogw-api {
+  font-family: monospace;
+  font-size: 11px;
+  color: #718096;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ogw-popup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.ogw-popup-table td {
+  padding: 2px 4px;
+  vertical-align: top;
+}
+
+.ogw-popup-table td:first-child {
+  color: #718096;
+  width: 70px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ogw-popup-table td:last-child { color: #2d3748; }
+
+.ogw-status-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  #us-oil-gas-wells-map { height: 380px; }
+
+  #us-oil-gas-wells-search { width: 120px; }
+
+  #us-oil-gas-wells-legend {
+    bottom: 28px;
+    right: 6px;
+    padding: 6px 8px;
+    min-width: 120px;
+  }
+
+  .ogw-legend-item { font-size: 11px; }
+}
