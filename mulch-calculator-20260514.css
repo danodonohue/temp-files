@@ -1,0 +1,518 @@
+/* Mulch Calculator - Scoped Styles */
+#mulch-calculator-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+#mulch-calculator-container * {
+    box-sizing: border-box;
+}
+
+/* Header */
+.mulch-header {
+    background: linear-gradient(135deg, #5d4037 0%, #4e342e 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.mulch-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.mulch-subtitle {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Layout */
+.mulch-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    min-height: 680px;
+}
+
+/* Map side */
+.mulch-map-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mulch-search-bar {
+    display: flex;
+    gap: 8px;
+}
+
+.mulch-address-input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.mulch-address-input:focus {
+    outline: none;
+    border-color: #5d4037;
+    box-shadow: 0 0 0 3px rgba(93,64,55,0.12);
+}
+
+.mulch-map-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#mulch-calculator-map {
+    width: 100%;
+    height: 520px;
+}
+
+.mulch-map-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.92);
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #5d4037;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 800;
+}
+
+/* Bed list */
+.mulch-bed-list {
+    background: #fdf6f0;
+    border: 1px solid #e0cfc8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    max-height: 110px;
+    overflow-y: auto;
+}
+
+.mulch-bed-list-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5d4037;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mulch-bed-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #ede0d8;
+}
+
+.mulch-bed-row:last-child {
+    border-bottom: none;
+}
+
+.mulch-bed-row span {
+    color: #4e342e;
+    font-weight: 500;
+}
+
+.mulch-bed-del {
+    background: none;
+    border: none;
+    color: #c62828;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.mulch-bed-del:hover {
+    color: #b71c1c;
+}
+
+.mulch-beds-total {
+    font-size: 13px;
+    font-weight: 700;
+    color: #5d4037;
+    margin: 6px 0 0 0;
+    padding-top: 6px;
+    border-top: 2px solid #5d4037;
+}
+
+.mulch-no-beds {
+    font-size: 13px;
+    color: #9e8880;
+    font-style: italic;
+}
+
+/* Panel side */
+.mulch-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+.mulch-section {
+    background: #f8f4f2;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.mulch-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4e342e;
+    border-bottom: 2px solid #5d4037;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Inputs */
+.mulch-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.mulch-input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6d4c41;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.mulch-select,
+.mulch-number {
+    padding: 7px 10px;
+    border: 1px solid #d7c4bc;
+    border-radius: 5px;
+    font-size: 13px;
+    background: white;
+    color: #3e2723;
+    width: 100%;
+}
+
+.mulch-select:focus,
+.mulch-number:focus {
+    outline: none;
+    border-color: #5d4037;
+}
+
+.mulch-unit-toggle {
+    display: flex;
+    gap: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #d7c4bc;
+}
+
+.mulch-unit-btn {
+    flex: 1;
+    padding: 7px 0;
+    border: none;
+    background: white;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #6d4c41;
+    transition: all 0.15s;
+}
+
+.mulch-unit-btn.active {
+    background: #5d4037;
+    color: white;
+}
+
+/* Results */
+.mulch-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.mulch-result-item {
+    background: white;
+    border: 1px solid #e0cfc8;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+}
+
+.mulch-result-item.highlight {
+    background: #5d4037;
+    border-color: #5d4037;
+}
+
+.mulch-result-item.highlight .mulch-result-val {
+    color: white;
+}
+
+.mulch-result-item.highlight .mulch-result-lbl {
+    color: rgba(255,255,255,0.8);
+}
+
+.mulch-result-val {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #4e342e;
+    line-height: 1.1;
+}
+
+.mulch-result-lbl {
+    display: block;
+    font-size: 11px;
+    color: #9e8880;
+    margin-top: 2px;
+}
+
+.mulch-result-full {
+    background: white;
+    border: 1px solid #e0cfc8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-top: 8px;
+}
+
+.mulch-result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #f0e8e4;
+}
+
+.mulch-result-row:last-child {
+    border-bottom: none;
+}
+
+.mulch-result-row .lbl {
+    color: #6d4c41;
+}
+
+.mulch-result-row .val {
+    font-weight: 600;
+    color: #3e2723;
+}
+
+/* Pine straw note */
+.mulch-pine-note {
+    display: none;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #5d4e00;
+    margin-top: 8px;
+}
+
+.mulch-pine-note.visible {
+    display: block;
+}
+
+/* Cost panel */
+.mulch-cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.mulch-cost-result {
+    background: white;
+    border: 1px solid #e0cfc8;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.mulch-cost-result .lbl {
+    display: block;
+    font-size: 11px;
+    color: #9e8880;
+    margin-bottom: 2px;
+}
+
+.mulch-cost-result .val {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #4e342e;
+}
+
+.mulch-cost-total {
+    background: #5d4037;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.mulch-cost-total .lbl {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 2px;
+}
+
+.mulch-cost-total .val {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+/* Buttons */
+.mulch-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.mulch-btn-search {
+    background: #5d4037;
+    color: white;
+    white-space: nowrap;
+}
+
+.mulch-btn-search:hover { background: #4e342e; }
+
+.mulch-btn-clear {
+    background: #ef5350;
+    color: white;
+    width: 100%;
+    margin-top: 8px;
+    padding: 9px;
+}
+
+.mulch-btn-clear:hover { background: #c62828; }
+
+.mulch-btn-print {
+    background: #388e3c;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.mulch-btn-print:hover { background: #2e7d32; }
+
+/* Loading */
+.mulch-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    border-radius: 8px;
+}
+
+.mulch-loading.hidden { display: none; }
+
+.mulch-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #e0cfc8;
+    border-top-color: #5d4037;
+    border-radius: 50%;
+    animation: mulch-spin 0.9s linear infinite;
+}
+
+@keyframes mulch-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mulch-body {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 14px;
+    }
+
+    #mulch-calculator-map {
+        height: 380px;
+    }
+
+    .mulch-panel {
+        max-height: none;
+    }
+
+    .mulch-result-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    #mulch-calculator-map {
+        height: 300px;
+    }
+
+    .mulch-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mulch-cost-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    #mulch-calculator-container {
+        box-shadow: none;
+    }
+
+    .mulch-search-bar,
+    .mulch-btn-clear,
+    .mulch-btn-print,
+    .mulch-map-hint {
+        display: none !important;
+    }
+
+    #mulch-calculator-map {
+        height: 320px;
+    }
+
+    .mulch-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* On-map measurement labels */
+.mulch-measure-label {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
