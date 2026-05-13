@@ -1,0 +1,373 @@
+/* Topsoil Calculator — Scoped Styles
+   All selectors prefixed to #topsoil-calculator-container
+   to avoid conflicts with WordPress theme styles.
+*/
+
+#topsoil-calculator-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+  overflow: hidden;
+  position: relative;
+}
+
+#topsoil-calculator-container * {
+  box-sizing: border-box;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-header {
+  background: linear-gradient(135deg, #5d4037 0%, #3e2723 100%);
+  color: #fff;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+#topsoil-calculator-container .tc-header h3 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#topsoil-calculator-container .tc-header p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.88;
+}
+
+/* ─── Layout ──────────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  min-height: 680px;
+}
+
+/* ─── Map column ─────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-map-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#topsoil-calculator-container .tc-map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+#topsoil-calculator-container .tc-address-wrap {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 220px;
+}
+
+#topsoil-calculator-container .tc-address-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+#topsoil-calculator-container .tc-address-input:focus {
+  outline: none;
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(109,76,65,0.12);
+}
+
+#topsoil-calculator-container .tc-map-wrap {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+}
+
+#topsoil-calculator-map {
+  width: 100%;
+  height: 540px;
+  overflow: hidden;
+}
+
+#topsoil-calculator-container .tc-unit-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #555;
+  padding: 2px 0;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  white-space: nowrap;
+}
+
+#topsoil-calculator-container .tc-btn-primary {
+  background: #6d4c41;
+  color: #fff;
+}
+#topsoil-calculator-container .tc-btn-primary:hover { background: #5d4037; transform: translateY(-1px); }
+
+#topsoil-calculator-container .tc-btn-secondary {
+  background: #78909c;
+  color: #fff;
+}
+#topsoil-calculator-container .tc-btn-secondary:hover { background: #546e7a; }
+
+#topsoil-calculator-container .tc-btn-danger {
+  background: #e53935;
+  color: #fff;
+}
+#topsoil-calculator-container .tc-btn-danger:hover { background: #c62828; }
+
+#topsoil-calculator-container .tc-btn-export {
+  background: #43a047;
+  color: #fff;
+}
+#topsoil-calculator-container .tc-btn-export:hover { background: #2e7d32; }
+
+/* ─── Area list ──────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-area-list-wrap {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  min-height: 48px;
+}
+
+#topsoil-calculator-container .tc-area-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f0f0f0;
+}
+#topsoil-calculator-container .tc-area-row:last-child { border-bottom: none; }
+
+#topsoil-calculator-container .tc-area-label { color: #555; }
+#topsoil-calculator-container .tc-area-val { font-weight: 700; color: #3e2723; }
+#topsoil-calculator-container .tc-area-total .tc-area-label,
+#topsoil-calculator-container .tc-area-total .tc-area-val {
+  font-weight: 700;
+  color: #3e2723;
+  border-top: 1px solid #bdbdbd;
+  padding-top: 4px;
+}
+
+#topsoil-calculator-container .tc-empty-areas {
+  font-size: 12px;
+  color: #9e9e9e;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─── Panels column ──────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-panels-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 680px;
+  overflow-y: auto;
+}
+
+#topsoil-calculator-container .tc-panel {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+#topsoil-calculator-container .tc-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3e2723;
+  border-bottom: 2px solid #a1887f;
+  padding-bottom: 6px;
+  margin: 0 0 12px 0;
+}
+
+/* ─── Inputs ─────────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+#topsoil-calculator-container .tc-input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #5d4037;
+}
+
+#topsoil-calculator-container .tc-select,
+#topsoil-calculator-container .tc-number-input {
+  padding: 7px 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  font-size: 13px;
+  background: #fff;
+  width: 100%;
+}
+
+#topsoil-calculator-container .tc-select:focus,
+#topsoil-calculator-container .tc-number-input:focus {
+  outline: none;
+  border-color: #6d4c41;
+}
+
+#topsoil-calculator-container .tc-input-with-prefix {
+  display: flex;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#topsoil-calculator-container .tc-prefix {
+  background: #eeeeee;
+  padding: 7px 8px;
+  font-size: 12px;
+  color: #616161;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#topsoil-calculator-container .tc-input-with-prefix .tc-number-input {
+  border: none;
+  border-radius: 0;
+}
+
+/* ─── Result rows ────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+}
+#topsoil-calculator-container .tc-result-row:last-child { border-bottom: none; }
+
+#topsoil-calculator-container .tc-result-label { color: #616161; }
+#topsoil-calculator-container .tc-result-val { font-weight: 700; color: #3e2723; text-align: right; }
+
+#topsoil-calculator-container .tc-result-row.tc-highlight .tc-result-val {
+  font-size: 15px;
+  color: #4e342e;
+}
+
+#topsoil-calculator-container .tc-cost-total-row {
+  border-top: 2px solid #6d4c41;
+  margin-top: 6px;
+  padding-top: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #3e2723;
+}
+
+#topsoil-calculator-container .tc-crossover-note {
+  font-size: 11px;
+  color: #795548;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ─── Section divider ────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #795548;
+  margin: 10px 0 4px 0;
+}
+
+/* ─── Export row ─────────────────────────────────────────────────────────────── */
+#topsoil-calculator-container .tc-export-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ─── Map measure labels ─────────────────────────────────────────────────────── */
+.tc-measure-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.tc-measure-label .tc-label-primary {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3e2723;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 0 6px rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+.tc-measure-label .tc-label-secondary {
+  font-size: 10px;
+  font-weight: 600;
+  color: #6d4c41;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+  white-space: nowrap;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #topsoil-calculator-container .tc-body {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  #topsoil-calculator-map {
+    height: 380px;
+  }
+
+  #topsoil-calculator-container .tc-panels-col {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  #topsoil-calculator-map {
+    height: 300px;
+  }
+
+  #topsoil-calculator-container .tc-body {
+    padding: 8px;
+    gap: 12px;
+  }
+}
+
+/* ─── Print ──────────────────────────────────────────────────────────────────── */
+@media print {
+  #topsoil-calculator-container .tc-map-toolbar,
+  #topsoil-calculator-container .tc-export-row,
+  #topsoil-calculator-container .tc-btn-danger {
+    display: none !important;
+  }
+
+  #topsoil-calculator-container .tc-panels-col {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  #topsoil-calculator-map {
+    height: 360px;
+  }
+}
