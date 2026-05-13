@@ -1,0 +1,126 @@
+#us-lead-service-lines-map-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+#us-lead-service-lines-map-map {
+  width: 100%;
+  height: 550px;
+}
+
+#us-lead-service-lines-map-controls {
+  padding: 12px 0 4px;
+}
+
+.us-lead-service-lines-map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.us-lead-service-lines-map-filter-btn {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.us-lead-service-lines-map-filter-btn.active {
+  background: #e53935;
+  color: #fff;
+  border-color: #e53935;
+}
+
+.us-lead-service-lines-map-filter-note {
+  font-size: 0.73rem;
+  color: #666;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.us-lead-service-lines-map-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.us-lead-service-lines-map-address {
+  flex: 1 1 200px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.us-lead-service-lines-map-search-btn,
+.us-lead-service-lines-map-locate-btn {
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.us-lead-service-lines-map-search-btn:hover,
+.us-lead-service-lines-map-locate-btn:hover {
+  background: #e0e0e0;
+}
+
+.us-lead-service-lines-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.us-lead-service-lines-map-legend p {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.us-lead-service-lines-map-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.us-lead-service-lines-map-legend-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.us-lead-service-lines-map-note {
+  font-size: 0.72rem;
+  color: #666;
+  margin: 4px 0 0;
+}
+
+@media (max-width: 500px) {
+  #us-lead-service-lines-map-map {
+    height: 380px;
+  }
+  .us-lead-service-lines-map-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
