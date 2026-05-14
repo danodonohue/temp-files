@@ -17,14 +17,48 @@
 
   var DEFAULT_VIEW = { center: [38.5, -97.0], zoom: 4 };
 
+  var canvasRenderer = L.canvas({ padding: 0.5, tolerance: 10 });
+
   var map = L.map(MAP_ID, {
     center: DEFAULT_VIEW.center,
     zoom: DEFAULT_VIEW.zoom,
     minZoom: 3,
     maxZoom: 17,
-    preferCanvas: true,
+    renderer: canvasRenderer,
     zoomControl: true
   });
+
+  (function injectZoomHint() {
+    var mapEl = document.getElementById(MAP_ID);
+    if (!mapEl) return;
+    var hint = document.createElement('div');
+    hint.className = 'lr-zoom-hint';
+    hint.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);'
+      + 'background:rgba(31,63,120,0.92);color:#fff;font-size:12.5px;font-weight:500;'
+      + 'padding:6px 14px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,0.18);'
+      + 'z-index:500;pointer-events:none;transition:opacity .35s ease;'
+      + 'letter-spacing:0.2px;white-space:nowrap;max-width:92%;text-align:center;';
+    hint.textContent = IS_STATE_VIEW
+      ? 'Zoom in to see smaller rivers and lakes'
+      : 'Zoom in to your area to see more rivers and lakes';
+    mapEl.appendChild(hint);
+
+    function update() {
+      var z = map.getZoom();
+      if (z >= 8) {
+        hint.style.opacity = '0';
+      } else {
+        hint.style.opacity = '1';
+        hint.textContent = z >= 7
+          ? 'Zoom in for full detail'
+          : (IS_STATE_VIEW
+            ? 'Zoom in to see smaller rivers and lakes'
+            : 'Zoom in to your area to see more rivers and lakes');
+      }
+    }
+    update();
+    map.on('zoomend', update);
+  })();
 
   var basemaps = {
     street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
