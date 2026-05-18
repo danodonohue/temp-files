@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Campgrounds Map - Local Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="./us-campgrounds-map.css" />
+  <style>
+    body { margin: 0; padding: 20px; font-family: sans-serif; background: #fff; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .mode-btn { margin: 4px; padding: 6px 12px; cursor: pointer; }
+    .mode-btn.active { background: #333; color: #fff; border-color: #333; }
+  </style>
+</head>
+<body>
+
+<h2>Local test &mdash; Hub mode (all federal campgrounds)</h2>
+<p>
+  <button class="mode-btn active" id="btn-hub" onclick="switchMode('hub')">Hub</button>
+  <button class="mode-btn" id="btn-spoke" onclick="switchMode('spoke')">Spoke (CA)</button>
+</p>
+
+<div id="us-campgrounds-map-container"
+     data-mode="hub"
+     data-json-url="../campground-data/hub.json">
+  <div id="us-campgrounds-map-map"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="./us-campgrounds-map.js"></script>
+
+<script>
+function switchMode(mode) {
+  var hub = document.getElementById('btn-hub');
+  var sp  = document.getElementById('btn-spoke');
+  hub.className = 'mode-btn' + (mode === 'hub' ? ' active' : '');
+  sp.className  = 'mode-btn' + (mode === 'spoke' ? ' active' : '');
+  document.querySelector('h2').textContent = mode === 'hub'
+    ? 'Local test - Hub mode (all federal campgrounds)'
+    : 'Local test - Spoke mode (California)';
+  // Reload page with new mode
+  window.location.href = '?mode=' + mode + '#';
+}
+// Check for mode param
+var qm = (new URLSearchParams(window.location.search)).get('mode');
+if (qm === 'spoke') {
+  document.getElementById('us-campgrounds-map-container').setAttribute('data-mode', 'spoke');
+  document.getElementById('us-campgrounds-map-container').setAttribute('data-json-url', '../campground-data/CA.json');
+  document.getElementById('btn-hub').className = 'mode-btn';
+  document.getElementById('btn-spoke').className = 'mode-btn active';
+  document.querySelector('h2').textContent = 'Local test - Spoke mode (California)';
+}
+</script>
+
+</body>
+</html>
