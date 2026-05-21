@@ -244,6 +244,18 @@
     });
   lightTiles.addTo(map);
 
+  // Remove the CSS loading spinner once the basemap tiles are up.
+  var mapReady = false;
+  function markMapReady() {
+    if (mapReady) { return; }
+    mapReady = true;
+    elMap.classList.add('us-prsm-loaded');
+  }
+  lightTiles.once('load', markMapReady);
+  streetTiles.once('load', markMapReady);
+  satTiles.once('load', markMapReady);
+  setTimeout(markMapReady, 8000);
+
   var BASEMAPS = { light: lightTiles, street: streetTiles, aerial: satTiles };
 
   function setBasemap(kind) {
