@@ -211,8 +211,9 @@
       '</select></div>' +
     '<div class="' + SLUG + '-fgroup"><label>Basemap</label>' +
       '<select id="' + SLUG + '-f-base">' +
-        '<option value="street">Street</option>' +
-        '<option value="sat">Satellite</option>' +
+        '<option value="light">Light (subdued)</option>' +
+        '<option value="street">OpenStreetMap</option>' +
+        '<option value="aerial">Aerial imagery</option>' +
       '</select></div>' +
     '<button type="button" id="' + SLUG + '-reset" class="' + SLUG + '-reset">Reset filters</button>';
 
@@ -225,6 +226,11 @@
     preferCanvas: true
   });
 
+  // Subdued light basemap (default) keeps the risk colours legible.
+  var lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd', maxZoom: 20
+  });
   var streetTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
   });
@@ -233,21 +239,19 @@
       attribution: 'Imagery &copy; Esri', maxZoom: 19
     });
   var labelTiles = L.tileLayer(
-    'https://stamen-tiles.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png', {
-      attribution: '', maxZoom: 18, opacity: 0.9
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '', maxZoom: 19
     });
-  streetTiles.addTo(map);
+  lightTiles.addTo(map);
+
+  var BASEMAPS = { light: lightTiles, street: streetTiles, aerial: satTiles };
 
   function setBasemap(kind) {
-    if (kind === 'sat') {
-      map.removeLayer(streetTiles);
-      satTiles.addTo(map);
-      labelTiles.addTo(map);
-    } else {
-      map.removeLayer(satTiles);
-      map.removeLayer(labelTiles);
-      streetTiles.addTo(map);
-    }
+    [lightTiles, streetTiles, satTiles, labelTiles].forEach(function (t) {
+      if (map.hasLayer(t)) { map.removeLayer(t); }
+    });
+    (BASEMAPS[kind] || lightTiles).addTo(map);
+    if (kind === 'aerial') { labelTiles.addTo(map); }
   }
 
   /* ---------------- legend ---------------- */
