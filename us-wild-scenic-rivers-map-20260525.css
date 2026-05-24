@@ -1,0 +1,350 @@
+/* ==== US Wild and Scenic Rivers Map ==== */
+#us-wild-scenic-rivers-map-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2933;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* stats strip */
+#us-wild-scenic-rivers-map-container .wsr-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 0 14px 0;
+}
+#us-wild-scenic-rivers-map-container .wsr-stat {
+  background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  padding: 12px 10px;
+  text-align: center;
+}
+#us-wild-scenic-rivers-map-container .wsr-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0c4a6e;
+  line-height: 1.1;
+}
+#us-wild-scenic-rivers-map-container .wsr-stat-label {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* toolbar */
+#us-wild-scenic-rivers-map-container .wsr-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+#us-wild-scenic-rivers-map-container .wsr-search {
+  flex: 1 1 240px;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+#us-wild-scenic-rivers-map-container .wsr-btn {
+  padding: 8px 14px;
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+#us-wild-scenic-rivers-map-container .wsr-btn:hover { background: #1e40af; }
+#us-wild-scenic-rivers-map-container .wsr-btn-alt {
+  background: #0e7490;
+}
+#us-wild-scenic-rivers-map-container .wsr-btn-alt:hover { background: #155e75; }
+#us-wild-scenic-rivers-map-container .wsr-basemap {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* filter bar */
+#us-wild-scenic-rivers-map-container .wsr-filterbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+#us-wild-scenic-rivers-map-container .wsr-namefilter {
+  flex: 1 1 260px;
+  min-width: 200px;
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+#us-wild-scenic-rivers-map-container .wsr-showing {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+#us-wild-scenic-rivers-map-container .wsr-reset {
+  padding: 6px 12px;
+  background: #fff;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+#us-wild-scenic-rivers-map-container .wsr-reset:hover { background: #eff6ff; }
+
+/* map */
+#us-wild-scenic-rivers-map-container .wsr-map-wrap {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+#us-wild-scenic-rivers-map-container #us-wild-scenic-rivers-map-map {
+  width: 100%;
+  height: 580px;
+  min-height: 360px;
+  background: #e0f2fe;
+}
+
+/* loading overlay */
+#us-wild-scenic-rivers-map-container .wsr-loading {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  z-index: 999;
+  transition: opacity 0.3s;
+}
+#us-wild-scenic-rivers-map-container .wsr-loading.wsr-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+#us-wild-scenic-rivers-map-container .wsr-spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #bae6fd;
+  border-top: 4px solid #0c4a6e;
+  border-radius: 50%;
+  animation: wsr-spin 0.9s linear infinite;
+  margin-bottom: 12px;
+}
+@keyframes wsr-spin {
+  to { transform: rotate(360deg); }
+}
+#us-wild-scenic-rivers-map-container .wsr-loading-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0c4a6e;
+}
+#us-wild-scenic-rivers-map-container .wsr-loading-sub {
+  font-size: 0.8rem;
+  color: #475569;
+  margin-top: 4px;
+}
+
+/* message bar */
+#us-wild-scenic-rivers-map-container .wsr-msg {
+  margin: 8px 0;
+  padding: 0;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  display: none;
+}
+#us-wild-scenic-rivers-map-container .wsr-msg.wsr-show {
+  display: block;
+  padding: 8px 12px;
+}
+#us-wild-scenic-rivers-map-container .wsr-msg.wsr-info {
+  background: #ecfeff;
+  color: #155e75;
+  border: 1px solid #67e8f9;
+}
+#us-wild-scenic-rivers-map-container .wsr-msg.wsr-err {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* legends */
+#us-wild-scenic-rivers-map-container .wsr-legends {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-item:hover {
+  background: #e2e8f0;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-item.wsr-off {
+  opacity: 0.5;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-cb {
+  margin: 0;
+  cursor: pointer;
+}
+#us-wild-scenic-rivers-map-container .wsr-swatch {
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+#us-wild-scenic-rivers-map-container .wsr-swatch-dash {
+  background-image: repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px);
+  background-color: transparent !important;
+  color: #a16207;
+  height: 4px;
+}
+#us-wild-scenic-rivers-map-container .wsr-swatch-dot {
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-label {
+  flex: 1;
+  color: #1f2933;
+}
+#us-wild-scenic-rivers-map-container .wsr-legend-count {
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #fff;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+
+/* footer */
+#us-wild-scenic-rivers-map-container .wsr-foot {
+  margin-top: 10px;
+  padding: 10px 0;
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.5;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* popup */
+.wsr-popup {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-width: 220px;
+  max-width: 290px;
+}
+.wsr-popup h4 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  color: #0c4a6e;
+  line-height: 1.2;
+}
+.wsr-popup p {
+  margin: 4px 0;
+  font-size: 0.85rem;
+  color: #1f2933;
+  line-height: 1.4;
+}
+.wsr-popup-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.wsr-popup-label {
+  font-weight: 600;
+  color: #475569;
+}
+.wsr-popup-orvs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.wsr-popup-orv {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  color: #0c4a6e;
+}
+.wsr-popup-link {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 600;
+}
+.wsr-popup-link:hover { text-decoration: underline; }
+
+/* responsive */
+@media (max-width: 700px) {
+  #us-wild-scenic-rivers-map-container .wsr-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #us-wild-scenic-rivers-map-container .wsr-stat-num { font-size: 1.2rem; }
+  #us-wild-scenic-rivers-map-container #us-wild-scenic-rivers-map-map {
+    height: 420px;
+  }
+}
+@media (max-width: 480px) {
+  #us-wild-scenic-rivers-map-container #us-wild-scenic-rivers-map-map {
+    height: 360px;
+  }
+  #us-wild-scenic-rivers-map-container .wsr-toolbar { flex-direction: column; }
+  #us-wild-scenic-rivers-map-container .wsr-search,
+  #us-wild-scenic-rivers-map-container .wsr-btn,
+  #us-wild-scenic-rivers-map-container .wsr-basemap {
+    width: 100%;
+  }
+}
